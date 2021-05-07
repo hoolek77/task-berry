@@ -8,14 +8,14 @@ import { InitialNotificationsState } from '../../store/reducers/notifications';
 
 export const Notification = () => {
   const { message, open, severity } = useSelector<RootState, InitialNotificationsState>((state) => state.notification);
-  const { close } = useNotifications();
+  const { closeNotification } = useNotifications();
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
 
-    close();
+    closeNotification();
   };
 
   return (

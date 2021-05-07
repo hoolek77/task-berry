@@ -9,7 +9,7 @@ export interface UserSignIn {
 }
 
 export const SignIn: FC = () => {
-  const { open } = useNotifications();
+  const { openNotification } = useNotifications();
   const [user, setUser] = useState<UserSignIn>({ email: '', password: '' });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -18,11 +18,11 @@ export const SignIn: FC = () => {
     try {
       const { data } = await api.post('/auth/signin', user);
 
-      open({ severity: 'success', message: 'Log in successful' });
+      openNotification({ severity: 'success', message: 'Log in successful!' });
 
       console.log(data);
     } catch (ex) {
-      console.log(ex);
+      openNotification({ severity: 'error', message: 'Unable to login!' });
     }
   };
 
