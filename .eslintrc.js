@@ -69,6 +69,7 @@ module.exports = {
         '@typescript-eslint/no-unsafe-call': 0,
       },
     },
+    { files: ['**/store/reducers/*.ts'], rules: { 'no-param-reassign': 'off' } },
   ],
   settings: {
     react: { version: 'detect' },

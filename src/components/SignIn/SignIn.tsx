@@ -1,7 +1,9 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store';
+import { InitialUserState, signInThunk } from 'store/reducers/user';
 
 import { useNotifications } from '../../hooks/useNotifications';
-import { api } from '../../utils';
 
 export interface UserSignIn {
   email: string;
@@ -9,22 +11,26 @@ export interface UserSignIn {
 }
 
 export const SignIn: FC = () => {
+  const dispatch = useDispatch();
+  const { isError, isSuccess, isLoading } = useSelector<RootState, InitialUserState>((state) => state.user);
   const { openNotification } = useNotifications();
   const [user, setUser] = useState<UserSignIn>({ email: '', password: '' });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    try {
-      const { data } = await api.post('/auth/signin', user);
+    dispatch(signInThunk(user));
+  };
 
-      openNotification({ severity: 'success', message: 'Log in successful!' });
-
-      console.log(data);
-    } catch (ex) {
+  useEffect(() => {
+    if (isError) {
       openNotification({ severity: 'error', message: 'Unable to login!' });
     }
-  };
+
+    if (isSuccess) {
+      openNotification({ severity: 'success', message: 'Log in successful!' });
+    }
+  }, [isError, isSuccess, openNotification]);
 
   return (
     <div>
@@ -47,6 +53,7 @@ export const SignIn: FC = () => {
         />
         <button type="submit">Sign In</button>
       </form>
+      {isLoading && <h1>LOADING...</h1>}
     </div>
   );
 };
