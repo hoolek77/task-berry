@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { COOKIE_TOKEN, LS_EMAIL, LS_USERNAME } from 'constants/api';
-
-import { api, getCookieValue, saveCookie } from '../../utils';
+import { api, getCookieValue, saveCookie } from 'utils';
 
 export type InitialUserState = {
   email: string | null;

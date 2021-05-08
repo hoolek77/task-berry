@@ -1,10 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useNotifications } from 'hooks/useNotifications';
 import { RootState } from 'store';
 import { InitialUserState, signInThunk } from 'store/reducers/user';
-
-import { useNotifications } from '../../hooks/useNotifications';
 
 export interface UserSignIn {
   email: string;

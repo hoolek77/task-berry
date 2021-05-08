@@ -1,6 +1,6 @@
 import axios from 'axios';
+import { COOKIE_TOKEN } from 'constants/api';
 
-import { COOKIE_TOKEN } from '../constants/api';
 import { getCookieValue } from './cookies';
 
 export const api = axios.create({

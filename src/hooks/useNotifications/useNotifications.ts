@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
-
-import { Notification } from '../../models';
-import { closeNotification as close, openNotification as open } from '../../store/reducers/notifications';
+import { Notification } from 'models';
+import { closeNotification as close, openNotification as open } from 'store/reducers/notifications';
 
 const useNotifications = () => {
   const dispatch = useDispatch();
