@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { RootState } from 'store';
 import { InitialUserState, signInThunk } from 'store/reducers/user';
 
@@ -14,6 +15,7 @@ export const SignIn: FC = () => {
   const dispatch = useDispatch();
   const { isError, isSuccess, isLoading } = useSelector<RootState, InitialUserState>((state) => state.user);
   const { openNotification } = useNotifications();
+  const history = useHistory();
   const [user, setUser] = useState<UserSignIn>({ email: '', password: '' });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -29,8 +31,9 @@ export const SignIn: FC = () => {
 
     if (isSuccess) {
       openNotification({ severity: 'success', message: 'Log in successful!' });
+      history.push('/home');
     }
-  }, [isError, isSuccess, openNotification]);
+  }, [isError, isSuccess, openNotification, history]);
 
   return (
     <div>
