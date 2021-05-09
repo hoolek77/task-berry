@@ -19,6 +19,8 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeTypeLight | ThemeTypeDark }>
   }
 
   body {
+    margin: 0;
+    padding: 0;
     background-color: ${(props) => props.theme.customWhite};
   }
 `;

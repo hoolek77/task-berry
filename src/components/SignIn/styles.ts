@@ -37,7 +37,7 @@ export const SignInContainer = styled.div`
       }
     }
   }
-  @media (max-width: 800px) {
+  @media (max-width: 1350px) {
     width: 90vw;
     background: transparent;
     box-shadow: none;
@@ -57,7 +57,7 @@ export const SignInHeader = styled.div`
   border-radius: 8px 8px 0 0;
   margin-bottom: 80px;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  @media (max-width: 800px) {
+  @media (max-width: 1350px) {
     font-size: 1.4rem;
     background: transparent;
     margin-bottom: 50px;
