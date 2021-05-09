@@ -1,14 +1,13 @@
 import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Button } from 'components/Button';
+import { ButtonStyle } from 'components/Button/Button.style';
 import { useNotifications } from 'hooks/useNotifications';
 import { RootState } from 'store';
-import { InitialUserState, signInThunk } from 'store/reducers/user';
+import { InitialUserState, signInThunk, UserSignIn } from 'store/reducers/user';
 
-export interface UserSignIn {
-  email: string;
-  password: string;
-}
+import { FormInput, SignInContainer, SignInHeader } from './SignIn.styles';
 
 export const SignIn: FC = () => {
   const dispatch = useDispatch();
@@ -35,9 +34,10 @@ export const SignIn: FC = () => {
   }, [isError, isSuccess, openNotification, history]);
 
   return (
-    <div>
+    <SignInContainer>
+      <SignInHeader>SIGN IN</SignInHeader>
       <form onSubmit={handleSubmit}>
-        <input
+        <FormInput
           type="text"
           name="email"
           placeholder="Email"
@@ -45,7 +45,7 @@ export const SignIn: FC = () => {
           value={user.email}
           onChange={(e) => setUser((prevState) => ({ ...prevState, email: e.target.value }))}
         />
-        <input
+        <FormInput
           type="password"
           name="password"
           placeholder="Password"
@@ -53,9 +53,12 @@ export const SignIn: FC = () => {
           value={user.password}
           onChange={(e) => setUser((prevState) => ({ ...prevState, password: e.target.value }))}
         />
-        <button type="submit">Sign In</button>
+        <Button buttonStyle={ButtonStyle.SIGN_MAIN} type="submit">
+          Login
+        </Button>
+        <Button buttonStyle={ButtonStyle.SIGN_SECONDARY}>Sign Up</Button>
       </form>
       {isLoading && <h1>LOADING...</h1>}
-    </div>
+    </SignInContainer>
   );
 };

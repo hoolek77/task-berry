@@ -3,13 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { Color, Notification } from '../../models';
 
 export type InitialNotificationsState = {
-  severity: Color | undefined;
+  severity: Color;
   message: string;
   open: boolean;
 };
 
 const initialState: InitialNotificationsState = {
-  severity: undefined,
+  severity: 'success',
   message: '',
   open: false,
 };

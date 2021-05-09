@@ -1,9 +1,7 @@
 import { FC } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Notification } from 'components/Notifcation';
-import { ProtectedRoute } from 'components/ProtectedRoute';
-import { Landing } from 'views';
-import { Home } from 'views/Home';
+import { Notification, ProtectedRoute } from 'components';
+import { Home, Landing } from 'views';
 
 const App: FC = () => {
   return (
