@@ -2,12 +2,12 @@ import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
-import { ButtonStyle } from 'components/Button/Button.style';
+import { ButtonStyle } from 'components/Button/styles';
 import { useNotifications } from 'hooks/useNotifications';
 import { RootState } from 'store';
 import { InitialUserState, signInThunk, UserSignIn } from 'store/reducers/user';
 
-import { FormInput, SignInContainer, SignInHeader } from './SignIn.styles';
+import { FormInput, SignInContainer, SignInHeader } from './styles';
 
 export const SignIn: FC = () => {
   const dispatch = useDispatch();

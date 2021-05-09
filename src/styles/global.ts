@@ -3,7 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 import { ThemeTypeDark, ThemeTypeLight } from './theme';
 
 const GlobalStyle = createGlobalStyle<{ theme: ThemeTypeLight | ThemeTypeDark }>`
-  @import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
   *,
   *:before,
   *:after {

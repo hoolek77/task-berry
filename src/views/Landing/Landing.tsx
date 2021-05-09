@@ -1,6 +1,6 @@
 import { SignIn } from 'components';
 
-import { Sign } from './Landing.style';
+import { Sign } from './styles';
 
 export const Landing = () => {
   return (

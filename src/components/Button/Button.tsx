@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { ButtonStyle, CustomButton } from './Button.style';
+import { ButtonStyle, CustomButton } from './styles';
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   children: ReactNode;

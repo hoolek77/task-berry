@@ -5,8 +5,8 @@ const common = {
 
 export const theme = {
   light: {
-    primary: '#b5ddff',
-    secondary: '#a5acfb',
+    primary: '#a5acfb',
+    secondary: '#b5ddff',
     ...common,
   },
   dark: {

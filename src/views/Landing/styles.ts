@@ -10,7 +10,7 @@ export const Sign = styled.div`
   span {
     font-family: 'Righteous', cursive;
     font-size: 1.25rem;
-    color: ${(props) => props.theme.mainColor};
+    color: ${(props) => props.theme.primary};
   }
   @media (max-width: 800px) {
     width: 95%;
