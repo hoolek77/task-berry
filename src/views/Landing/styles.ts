@@ -67,12 +67,13 @@ export const Sign = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 450px;
-  height: 550px;
+  height: auto;
   span {
     font-family: 'Righteous', cursive;
     font-size: 1.25rem;
     color: ${(props) => props.theme.primary};
   }
+
   @media (max-width: 1350px) {
     width: 95%;
     height: 580px;

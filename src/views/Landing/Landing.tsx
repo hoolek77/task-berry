@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { ReactComponent as LandingSvg } from 'assets/LandingSvg.svg';
-import { SignIn } from 'components';
+import { SignIn, SignUp } from 'components';
 
 import { LandingPageContainer, Sign, Splash } from './styles';
 
-export const Landing = () => {
+const Landing = () => {
+  const [isSignUp, setIsSignUp] = useState(false);
+
   return (
     <LandingPageContainer>
       <Splash>
@@ -13,8 +16,10 @@ export const Landing = () => {
       </Splash>
       <Sign>
         <span>TASK BERRY</span>
-        <SignIn />
+        {isSignUp ? <SignUp setIsSignUp={setIsSignUp} /> : <SignIn setIsSignUp={setIsSignUp} />}
       </Sign>
     </LandingPageContainer>
   );
 };
+
+export { Landing };

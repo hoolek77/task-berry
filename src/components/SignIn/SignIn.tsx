@@ -1,15 +1,20 @@
-import { FC, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { ButtonStyle } from 'components/Button/styles';
+import { Input } from 'components/Input';
 import { useNotifications } from 'hooks/useNotifications';
 import { RootState } from 'store';
 import { InitialUserState, signInThunk, UserSignIn } from 'store/reducers/user';
 
-import { FormInput, SignInContainer, SignInHeader } from './styles';
+import { SignInContainer, SignInHeader } from './styles';
 
-export const SignIn: FC = () => {
+interface SignInProps {
+  setIsSignUp: Dispatch<SetStateAction<boolean>>;
+}
+
+export const SignIn = ({ setIsSignUp }: SignInProps) => {
   const dispatch = useDispatch();
   const { isError, isSuccess, isLoading } = useSelector<RootState, InitialUserState>((state) => state.user);
   const { openNotification } = useNotifications();
@@ -37,7 +42,7 @@ export const SignIn: FC = () => {
     <SignInContainer>
       <SignInHeader>SIGN IN</SignInHeader>
       <form onSubmit={handleSubmit}>
-        <FormInput
+        <Input
           type="text"
           name="email"
           placeholder="Email"
@@ -45,7 +50,7 @@ export const SignIn: FC = () => {
           value={user.email}
           onChange={(e) => setUser((prevState) => ({ ...prevState, email: e.target.value }))}
         />
-        <FormInput
+        <Input
           type="password"
           name="password"
           placeholder="Password"
@@ -56,7 +61,9 @@ export const SignIn: FC = () => {
         <Button buttonStyle={ButtonStyle.SIGN_MAIN} type="submit">
           Login
         </Button>
-        <Button buttonStyle={ButtonStyle.SIGN_SECONDARY}>Sign Up</Button>
+        <Button buttonStyle={ButtonStyle.SIGN_SECONDARY} onClick={() => setIsSignUp((prev) => !prev)}>
+          Sign Up
+        </Button>
       </form>
       {isLoading && <h1>LOADING...</h1>}
     </SignInContainer>

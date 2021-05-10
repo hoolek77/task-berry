@@ -1,4 +1,5 @@
-export { Button } from './Button';
-export { Notification } from './Notifcation';
-export { ProtectedRoute } from './ProtectedRoute';
-export { SignIn } from './SignIn';
+export * from './Button';
+export * from './Notifcation';
+export * from './ProtectedRoute';
+export * from './SignIn';
+export * from './SignUp';

@@ -15,10 +15,10 @@ const App: FC = () => {
           <ProtectedRoute path="/home" exact>
             <Home />
           </ProtectedRoute>
+          <Route exact>
+            <NotFound />
+          </Route>
         </Switch>
-        <Route>
-          <NotFound />
-        </Route>
         <Notification />
       </BrowserRouter>
     </>
