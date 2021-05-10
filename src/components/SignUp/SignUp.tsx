@@ -33,14 +33,18 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
     password: '',
     passwordRepeat: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       await api.post('/auth/signup', { email, name, password });
       dispatch(signInThunk({ email, password }));
+      setIsLoading(false);
     } catch (ex) {
       openNotification({ severity: 'error', message: 'Something went wrong while creating your account.' });
+      setIsLoading(false);
     }
   };
 
@@ -93,7 +97,7 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           required
         />
 
-        <Button type="submit" buttonStyle={ButtonStyle.SIGN_MAIN}>
+        <Button type="submit" buttonStyle={ButtonStyle.SIGN_MAIN} isLoading={isLoading}>
           Register
         </Button>
         <Button

@@ -58,14 +58,13 @@ export const SignIn = ({ setIsSignUp }: SignInProps) => {
           value={user.password}
           onChange={(e) => setUser((prevState) => ({ ...prevState, password: e.target.value }))}
         />
-        <Button buttonStyle={ButtonStyle.SIGN_MAIN} type="submit">
-          Login
+        <Button buttonStyle={ButtonStyle.SIGN_MAIN} type="submit" isLoading={isLoading}>
+          Sign In
         </Button>
         <Button buttonStyle={ButtonStyle.SIGN_SECONDARY} onClick={() => setIsSignUp((prev) => !prev)}>
           Sign Up
         </Button>
       </form>
-      {isLoading && <h1>LOADING...</h1>}
     </SignInContainer>
   );
 };

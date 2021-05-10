@@ -62,6 +62,9 @@ const getButtonStyles = ({ buttonStyle }: { buttonStyle: ButtonStyle }) => {
 };
 
 export const CustomButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   outline: none;
   cursor: pointer;
   transition-duration: 200ms;
