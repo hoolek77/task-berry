@@ -1,2 +1,3 @@
-export { Landing } from './Landing';
-export { Home } from './Home';
+export * from './Landing';
+export * from './Home';
+export * from './NotFound';

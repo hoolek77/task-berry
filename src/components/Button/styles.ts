@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export enum ButtonStyle {
   SIGN_MAIN = 'sign-main',
   SIGN_SECONDARY = 'sign-secondary',
+  TASK_SUBMIT = 'task-submit',
 }
 
 const signMain = css`
@@ -34,12 +35,27 @@ const signSecondary = css`
   }
 `;
 
+const taskSubmit = css`
+  width: 180px;
+  height: 35px;
+  font-size: 1.15rem;
+  background-color: ${(props) => props.theme.primary};
+  border: none;
+  border-radius: 10px;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+`;
+
 const getButtonStyles = ({ buttonStyle }: { buttonStyle: ButtonStyle }) => {
   switch (buttonStyle) {
     case ButtonStyle.SIGN_MAIN:
       return signMain;
     case ButtonStyle.SIGN_SECONDARY:
       return signSecondary;
+    case ButtonStyle.TASK_SUBMIT:
+      return taskSubmit;
     default:
       return null;
   }
