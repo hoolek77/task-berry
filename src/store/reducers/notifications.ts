@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { Color, Notification } from '../../models';
+import { Notification, Severity } from '../../models';
 
 export type InitialNotificationsState = {
-  severity: Color;
+  severity: Severity;
   message: string;
   open: boolean;
 };
