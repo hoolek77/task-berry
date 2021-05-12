@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ReactComponent as LandingSvg } from 'assets/LandingSvg.svg';
+import { ReactComponent as LandingSvg } from 'assets/Landing.svg';
 import { SignIn, SignUp } from 'components';
 
 import { LandingPageContainer, Sign, Splash } from './styles';
