@@ -97,12 +97,12 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           required
         />
 
-        <Button type="submit" buttonStyle={ButtonStyle.SIGN_MAIN} isLoading={isLoading}>
+        <Button type="submit" buttonStyle={ButtonStyle.SUBMIT_MAIN} isLoading={isLoading}>
           Register
         </Button>
         <Button
           type="button"
-          buttonStyle={ButtonStyle.SIGN_SECONDARY}
+          buttonStyle={ButtonStyle.SUBMIT_SECONDARY}
           onClick={() => setIsSignUp((prev: boolean) => !prev)}
         >
           Sign In

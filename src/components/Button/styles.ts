@@ -1,12 +1,13 @@
 import styled, { css } from 'styled-components';
 
 export enum ButtonStyle {
-  SIGN_MAIN = 'sign-main',
-  SIGN_SECONDARY = 'sign-secondary',
+  SUBMIT_MAIN = 'submit-main',
+  SUBMIT_SECONDARY = 'submit-secondary',
   TASK_SUBMIT = 'task-submit',
+  TASK_ADD = 'task-add',
 }
 
-const signMain = css`
+const submitMain = css`
   width: 180px;
   height: 35px;
   font-size: 1.15rem;
@@ -20,7 +21,7 @@ const signMain = css`
   }
 `;
 
-const signSecondary = css`
+const submitSecondary = css`
   width: 180px;
   height: 35px;
   font-size: 1rem;
@@ -35,27 +36,44 @@ const signSecondary = css`
   }
 `;
 
-const taskSubmit = css`
-  width: 180px;
-  height: 35px;
-  font-size: 1.15rem;
+const taskAdd = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  font-size: 3.1rem;
+  font-weight: 500;
   background-color: ${(props) => props.theme.primary};
+  margin: 0;
   border: none;
   border-radius: 10px;
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    opacity: 0.9;
+  }
+  &:active {
+    svg {
+      transition-duration: 250ms;
+      transform: scale(1.2);
+    }
+  }
+  @media (max-width: 800px) {
+    right: 20px;
+    bottom: 20px;
   }
 `;
 
 const getButtonStyles = ({ buttonStyle }: { buttonStyle: ButtonStyle }) => {
   switch (buttonStyle) {
-    case ButtonStyle.SIGN_MAIN:
-      return signMain;
-    case ButtonStyle.SIGN_SECONDARY:
-      return signSecondary;
-    case ButtonStyle.TASK_SUBMIT:
-      return taskSubmit;
+    case ButtonStyle.SUBMIT_MAIN:
+      return submitMain;
+    case ButtonStyle.SUBMIT_SECONDARY:
+      return submitSecondary;
+    case ButtonStyle.TASK_ADD:
+      return taskAdd;
     default:
       return null;
   }

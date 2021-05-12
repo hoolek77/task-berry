@@ -28,10 +28,10 @@ const initialState: InititalTasksState = {
   isError: false,
 };
 
-export const getTasksThunk = createAsyncThunk('tasks/getTasks', async (token: string) => {
+export const getTasksThunk = createAsyncThunk('tasks/getTasks', async (accessToken: string) => {
   try {
     const { data } = await api.get('/tasks', {
-      headers: { Authorization: `bearer ${token}` },
+      headers: { Authorization: `bearer ${accessToken}` },
     });
 
     return data;
@@ -42,10 +42,10 @@ export const getTasksThunk = createAsyncThunk('tasks/getTasks', async (token: st
 
 export const addTaskThunk = createAsyncThunk(
   'tasks/addTask',
-  async ({ task, token }: { task: CreateTaskType; token: string }) => {
+  async ({ task, accessToken }: { task: CreateTaskType; accessToken: string }) => {
     try {
       const { data } = await api.post('/tasks', task, {
-        headers: { Authorization: `bearer ${token}` },
+        headers: { Authorization: `bearer ${accessToken}` },
       });
 
       return data;
@@ -57,13 +57,13 @@ export const addTaskThunk = createAsyncThunk(
 
 export const updateFinishedTaskThunk = createAsyncThunk(
   'tasks/updateFinishedTask',
-  async ({ id, token }: { id: string; token: string }) => {
+  async ({ id, accessToken }: { id: string; accessToken: string }) => {
     try {
       const { data }: { data: Task } = await api.put(
         `/tasks/${id}/update-finished`,
         {},
         {
-          headers: { Authorization: `bearer ${token}` },
+          headers: { Authorization: `bearer ${accessToken}` },
         },
       );
 
@@ -76,10 +76,10 @@ export const updateFinishedTaskThunk = createAsyncThunk(
 
 export const updateTaskThunk = createAsyncThunk(
   'tasks/updateTask',
-  async ({ task, id, token }: { task: UpdateTaskType; id: string; token: string }) => {
+  async ({ task, id, accessToken }: { task: UpdateTaskType; id: string; accessToken: string }) => {
     try {
       const { data } = await api.put(`/tasks/${id}/edit`, task, {
-        headers: { Authorization: `bearer ${token}` },
+        headers: { Authorization: `bearer ${accessToken}` },
       });
 
       return data;
@@ -91,10 +91,10 @@ export const updateTaskThunk = createAsyncThunk(
 
 export const deleteTaskThunk = createAsyncThunk(
   'tasks/deleteTask',
-  async ({ id, token }: { id: string; token: string }) => {
+  async ({ id, accessToken }: { id: string; accessToken: string }) => {
     try {
       await api.delete(`/tasks/${id}`, {
-        headers: { Authorization: `bearer ${token}` },
+        headers: { Authorization: `bearer ${accessToken}` },
       });
 
       return id;
