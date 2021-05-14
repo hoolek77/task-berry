@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { RouteComponentProps, useHistory, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { ReactComponent as Home } from 'assets/Home.svg';
 import { ReactComponent as Logout } from 'assets/Logout.svg';
 import { ReactComponent as Settings } from 'assets/Settings.svg';
@@ -12,13 +12,12 @@ interface Props extends RouteComponentProps {
   name: string;
 }
 
-const MenuComponent = ({ name, location }: Props) => {
+const MenuComponent = ({ name, location, history }: Props) => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const signOut = () => {
     dispatch(signOutAction());
-    history.push('/');
+    history.go(0);
   };
 
   const checkRoute = (pathname: string) => {

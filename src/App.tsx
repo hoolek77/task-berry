@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { LandingRoute, Menu, Notification, ProtectedRoute } from 'components';
+import { Menu, Notification, ProtectedRoute } from 'components';
 import { RootState } from 'store';
 import { InitialUserState } from 'store/reducers/user';
 import { Home, Landing, UserSettings } from 'views';
@@ -13,11 +13,11 @@ const App: FC = () => {
   return (
     <>
       <BrowserRouter>
-        {accessToken && <Menu name={name} key={window.location.pathname} />}
+        {accessToken && <Menu name={name} />}
         <Switch>
-          <LandingRoute path="/" exact>
-            <Landing />
-          </LandingRoute>
+          <Route path="/" exact>
+            <Landing accessToken={accessToken} />
+          </Route>
           <ProtectedRoute path="/home" exact>
             <Home />
           </ProtectedRoute>
