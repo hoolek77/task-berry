@@ -7,3 +7,5 @@ export * from './Loader';
 export * from './Popup';
 export * from './PopupOverlay';
 export * from './TaskAdd';
+export * from './Menu';
+export * from './LandingRoute';

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { COOKIE_TOKEN, LS_EMAIL, LS_USERNAME } from 'constants/api';
-import { api, getCookieValue, saveCookie } from 'utils';
+import { api, getCookieValue, removeCookie, saveCookie } from 'utils';
 
 export type InitialUserState = {
   email: string | null;
@@ -58,7 +58,12 @@ export const signInThunk = createAsyncThunk('user/signIn', async (user: UserSign
 const userModule = createSlice({
   name: 'userModule',
   initialState,
-  reducers: {},
+  reducers: {
+    signOut(state) {
+      removeCookie(COOKIE_TOKEN);
+      state.accessToken = '';
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(signInThunk.fulfilled, (state, { payload }: { payload: UserPayload }) => {
       state.isLoading = false;
@@ -76,5 +81,7 @@ const userModule = createSlice({
     });
   },
 });
+
+export const { signOut } = userModule.actions;
 
 export { userModule };
