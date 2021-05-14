@@ -65,6 +65,17 @@ export const TaskDescripton = styled.p`
   &:hover {
     overflow-y: auto;
   }
+  &::-webkit-scrollbar {
+    width: 9px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #c7c7c7;
+    box-shadow: inset 0 0 5px #d3d3d3;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.primary};
+    border-radius: 0 0 10px 10px;
+  }
 `;
 
 export const TaskButtonsContainer = styled.div`

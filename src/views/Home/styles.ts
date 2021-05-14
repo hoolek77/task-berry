@@ -41,11 +41,13 @@ export const TasksContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  max-height: calc(100% - 183px);
+  max-height: calc(100vh - 160px);
   position: relative;
   top: 100px;
   padding: 10px 0 10px 10px;
   margin-bottom: 50px;
+  overflow-x: none;
+  overflow-y: auto;
   &::-webkit-scrollbar {
     width: 9px;
   }
