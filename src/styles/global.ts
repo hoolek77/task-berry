@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeTypeLight | ThemeTypeDark }>
     font-family: "Asap", sans-serif;
     width: 100%;
     height: 100%;
+    scroll-behavior: smooth;
   }
 
   body {

@@ -3,5 +3,5 @@ export const colors = [
   { color: '#de254f', id: 1 },
   { color: '#b5ddff', id: 2 },
   { color: '#963757', id: 3 },
-  { color: '#2d0c11', id: 4 },
+  { color: '#c96588', id: 4 },
 ];

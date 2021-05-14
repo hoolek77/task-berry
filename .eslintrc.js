@@ -34,6 +34,7 @@ module.exports = {
     '@typescript-eslint/array-type': 2,
     '@typescript-eslint/prefer-enum-initializers': 2,
     'import/order': 0,
+    'no-underscore-dangle': 'off',
     'import/prefer-default-export': 0,
     'simple-import-sort/imports': [
       2,
@@ -58,6 +59,7 @@ module.exports = {
         'react/require-default-props': 0,
         'react/react-in-jsx-scope': 0,
         'react/button-has-type': 0,
+        'no-underscore-dangle': 'off',
       },
     },
     {
@@ -69,7 +71,7 @@ module.exports = {
         '@typescript-eslint/no-unsafe-call': 0,
       },
     },
-    { files: ['**/store/reducers/*.ts'], rules: { 'no-param-reassign': 'off', 'no-underscore-dangle': 'off' } },
+    { files: ['**/store/reducers/*.ts'], rules: { 'no-param-reassign': 'off' } },
   ],
   settings: {
     react: { version: 'detect' },

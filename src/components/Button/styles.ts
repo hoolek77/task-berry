@@ -5,7 +5,14 @@ export enum ButtonStyle {
   SUBMIT_SECONDARY = 'submit-secondary',
   TASK_SUBMIT = 'task-submit',
   TASK_ADD = 'task-add',
+  TASK_FINISH = 'task-finish',
+  TASK_DELETE = 'task-delete',
 }
+
+type CustomButtonProps = {
+  buttonStyle: ButtonStyle;
+  color?: string;
+};
 
 const submitMain = css`
   width: 180px;
@@ -42,7 +49,7 @@ const taskAdd = css`
   justify-content: center;
   width: 65px;
   height: 65px;
-  position: absolute;
+  position: fixed;
   right: 40px;
   bottom: 40px;
   font-size: 3.1rem;
@@ -66,6 +73,30 @@ const taskAdd = css`
   }
 `;
 
+const taskFinish = css<{ color?: string }>`
+  width: 100px;
+  height: 35px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: ${(props) => props.color};
+  border-radius: 8px;
+  border: none;
+  transition-duration: 120ms;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const taskDelete = css`
+  width: 115px;
+  height: 35px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #d3d3d3;
+  border-radius: 8px;
+  border: none;
+`;
+
 const getButtonStyles = ({ buttonStyle }: { buttonStyle: ButtonStyle }) => {
   switch (buttonStyle) {
     case ButtonStyle.SUBMIT_MAIN:
@@ -74,12 +105,16 @@ const getButtonStyles = ({ buttonStyle }: { buttonStyle: ButtonStyle }) => {
       return submitSecondary;
     case ButtonStyle.TASK_ADD:
       return taskAdd;
+    case ButtonStyle.TASK_FINISH:
+      return taskFinish;
+    case ButtonStyle.TASK_DELETE:
+      return taskDelete;
     default:
       return null;
   }
 };
 
-export const CustomButton = styled.button`
+export const CustomButton = styled.button<CustomButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -9,7 +9,7 @@ export type Task = {
   _id: string;
   userId: string;
   title: string;
-  decription: string;
+  description: string;
   color: string;
   finished: boolean;
 };
