@@ -3,8 +3,7 @@ import { Alert } from '@material-ui/lab';
 import { useNotifications } from 'hooks/useNotifications';
 
 export const Notification = () => {
-  const { message, open, severity } = useNotifications();
-  const { closeNotification } = useNotifications();
+  const { closeNotification, message, open, severity } = useNotifications();
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {

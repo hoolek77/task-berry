@@ -4,7 +4,7 @@ import { ReactComponent as Home } from 'assets/Home.svg';
 import { ReactComponent as Logout } from 'assets/Logout.svg';
 import { ReactComponent as Settings } from 'assets/Settings.svg';
 import { HamburgerMenu } from 'components/HamburgerMenu';
-import { useTasks } from 'hooks';
+import { useUser } from 'hooks';
 
 import { MenuContainer, NavigationItem, NavigationPanel, UserInfo } from './styles';
 
@@ -13,7 +13,7 @@ interface Props extends RouteComponentProps {
 }
 
 const MenuComponent = ({ name, location }: Props) => {
-  const { signOut } = useTasks();
+  const { signOut } = useUser();
   const [isMenu, setIsMenu] = useState(false);
 
   const checkRoute = (pathname: string) => {
