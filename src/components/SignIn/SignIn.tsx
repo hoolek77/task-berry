@@ -1,12 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { ButtonStyle } from 'components/Button/styles';
 import { Input } from 'components/Input';
+import { useUser } from 'hooks';
 import { useNotifications } from 'hooks/useNotifications';
-import { RootState } from 'store';
-import { InitialUserState, signInThunk, UserSignIn } from 'store/reducers/user';
+import { UserSignIn } from 'store/reducers/user';
 
 import { SignInContainer, SignInHeader } from './styles';
 
@@ -15,8 +14,7 @@ interface SignInProps {
 }
 
 export const SignIn = ({ setIsSignUp }: SignInProps) => {
-  const dispatch = useDispatch();
-  const { isError, isSuccess, isLoading } = useSelector<RootState, InitialUserState>((state) => state.user);
+  const { isError, isSuccess, isLoading, signIn } = useUser();
   const { openNotification } = useNotifications();
   const history = useHistory();
   const [user, setUser] = useState<UserSignIn>({ email: '', password: '' });
@@ -24,7 +22,7 @@ export const SignIn = ({ setIsSignUp }: SignInProps) => {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    dispatch(signInThunk(user));
+    signIn(user);
   };
 
   useEffect(() => {

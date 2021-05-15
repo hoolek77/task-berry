@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'components/Button';
 import { ButtonStyle } from 'components/Button/styles';
 import { Input } from 'components/Input';
@@ -7,9 +6,8 @@ import { Popup } from 'components/Popup';
 import { PopupOverlay } from 'components/PopupOverlay';
 import { TaskColor } from 'components/TaskColor';
 import { colors } from 'constants/colors';
-import { RootState } from 'store';
-import { addTaskThunk, CreateTaskType } from 'store/reducers/tasks';
-import { InitialUserState } from 'store/reducers/user';
+import { useTasks, useUser } from 'hooks';
+import { CreateTaskType } from 'store/reducers/tasks';
 
 import { AddTaskHeader, ColorsContainer } from './styles';
 
@@ -18,14 +16,14 @@ interface Props {
 }
 
 const TaskAdd = ({ setIsPopup }: Props) => {
-  const dispatch = useDispatch();
+  const { addTask } = useTasks();
   const [task, setTask] = useState<CreateTaskType>({ title: '', description: '', color: '' });
   const { title, description, color } = task;
-  const { accessToken } = useSelector<RootState, InitialUserState>((state) => state.user);
+  const { accessToken } = useUser();
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    dispatch(addTaskThunk({ task, accessToken }));
+    addTask(task, accessToken);
     setIsPopup(false);
   };
 

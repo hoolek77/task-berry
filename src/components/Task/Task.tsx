@@ -1,11 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'components/Button';
 import { ButtonStyle } from 'components/Button/styles';
+import { useTasks, useUser } from 'hooks';
 import { Task as TaskType } from 'models';
-import { RootState } from 'store';
-import { deleteTaskThunk, updateFinishedTaskThunk } from 'store/reducers/tasks';
-import { InitialUserState } from 'store/reducers/user';
 
 import { TaskButtonsContainer, TaskContainer, TaskDescripton, TaskHeader, TaskHeading } from './styles';
 
@@ -14,16 +11,8 @@ interface Props {
 }
 
 const Task = ({ task: { _id, title, finished, description, color } }: Props) => {
-  const dispatch = useDispatch();
-  const { accessToken } = useSelector<RootState, InitialUserState>((state) => state.user);
-
-  const finishTask = () => {
-    dispatch(updateFinishedTaskThunk({ id: _id, accessToken }));
-  };
-
-  const deleteTask = () => {
-    dispatch(deleteTaskThunk({ id: _id, accessToken }));
-  };
+  const { finishTask, deleteTask } = useTasks();
+  const { accessToken } = useUser();
 
   return (
     <TaskContainer finished={finished}>
@@ -32,10 +21,10 @@ const Task = ({ task: { _id, title, finished, description, color } }: Props) => 
       </TaskHeader>
       <TaskDescripton>{description}</TaskDescripton>
       <TaskButtonsContainer>
-        <Button buttonStyle={ButtonStyle.TASK_FINISH} color={color} onClick={finishTask}>
+        <Button buttonStyle={ButtonStyle.TASK_FINISH} color={color} onClick={() => finishTask(_id, accessToken)}>
           {finished ? 'Undo' : 'Finish'}
         </Button>
-        <Button buttonStyle={ButtonStyle.TASK_DELETE} onClick={deleteTask}>
+        <Button buttonStyle={ButtonStyle.TASK_DELETE} onClick={() => deleteTask(_id, accessToken)}>
           Delete
         </Button>
       </TaskButtonsContainer>

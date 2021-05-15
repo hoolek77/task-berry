@@ -1,12 +1,10 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { ButtonStyle } from 'components/Button/styles';
 import { Input } from 'components/Input';
+import { useUser } from 'hooks';
 import { useNotifications } from 'hooks/useNotifications';
-import { RootState } from 'store';
-import { InitialUserState, signInThunk } from 'store/reducers/user';
 import { api } from 'utils';
 
 import { SignUpContainer, SignUpHeader } from './styles';
@@ -23,9 +21,8 @@ export interface SignUpData {
 }
 
 const SignUp = ({ setIsSignUp }: SignUpProps) => {
-  const dispatch = useDispatch();
   const history = useHistory();
-  const { isSuccess, isError } = useSelector<RootState, InitialUserState>((state) => state.user);
+  const { signIn, isSuccess, isError } = useUser();
   const { openNotification } = useNotifications();
   const [{ email, name, password, passwordRepeat }, setSignUpData] = useState<SignUpData>({
     email: '',
@@ -40,7 +37,7 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
     try {
       setIsLoading(true);
       await api.post('/auth/signup', { email, name, password });
-      dispatch(signInThunk({ email, password }));
+      signIn({ email, password });
       setIsLoading(false);
     } catch (ex) {
       openNotification({ severity: 'error', message: 'Something went wrong while creating your account.' });

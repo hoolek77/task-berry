@@ -1,14 +1,12 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Menu, Notification, ProtectedRoute } from 'components';
-import { RootState } from 'store';
-import { InitialUserState } from 'store/reducers/user';
+import { useUser } from 'hooks';
 import { Home, Landing, UserSettings } from 'views';
 import { NotFound } from 'views/NotFound';
 
 const App: FC = () => {
-  const { accessToken, name } = useSelector<RootState, InitialUserState>((state) => state.user);
+  const { accessToken, name } = useUser();
 
   return (
     <>

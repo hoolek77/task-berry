@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ReactComponent as PlusSvg } from 'assets/Plus.svg';
 import { Button, Loader, TaskAdd } from 'components';
 import { ButtonStyle } from 'components/Button/styles';
 import { TasksList } from 'components/TasksList';
+import { useTasks, useUser } from 'hooks';
 import { useNotifications } from 'hooks/useNotifications';
-import { RootState } from 'store';
-import { getTasksThunk, InititalTasksState } from 'store/reducers/tasks';
-import { InitialUserState } from 'store/reducers/user';
+import { getTasksThunk } from 'store/reducers/tasks';
 
 import { HomeContainer, TasksContainer, TasksHeader, TasksLoader } from './styles';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const { tasks, isError, isLoading } = useTasks();
   const { openNotification } = useNotifications();
-
-  const { tasks, isError, isLoading } = useSelector<RootState, InititalTasksState>((state) => state.tasks);
-  const { accessToken } = useSelector<RootState, InitialUserState>((state) => state.user);
+  const { accessToken } = useUser();
   const [isPopup, setIsPopup] = useState(false);
 
   useEffect(() => {
     dispatch(getTasksThunk(accessToken));
-  }, [dispatch, accessToken]);
+  }, [accessToken, dispatch]);
 
   useEffect(() => {
     if (isError) {
