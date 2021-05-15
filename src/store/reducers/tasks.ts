@@ -1,27 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Task } from 'models';
+import { CreateTaskType, Task, TasksState, UpdateTaskType } from 'models';
 import { api } from 'utils';
 
-export type InititalTasksState = {
-  tasks: Task[];
-  isLoading: boolean;
-  isSuccess: boolean;
-  isError: boolean;
-};
-
-export type CreateTaskType = {
-  title: string;
-  description: string;
-  color: string;
-};
-
-export type UpdateTaskType = {
-  title?: string;
-  description?: string;
-  color?: string;
-};
-
-const initialState: InititalTasksState = {
+const initialState: TasksState = {
   tasks: [],
   isLoading: false,
   isSuccess: false,

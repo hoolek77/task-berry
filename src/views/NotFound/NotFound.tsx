@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { ReactComponent as NotFoundSvg } from 'assets/NotFound.svg';
 import { Button } from 'components';
-import { ButtonStyle } from 'components/Button/styles';
+import { ButtonStyle } from 'models';
 
 import { AppName, Message, NotFoundPageContainer } from './styles';
 

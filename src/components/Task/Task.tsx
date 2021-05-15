@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button } from 'components/Button';
-import { ButtonStyle } from 'components/Button/styles';
 import { useTasks, useUser } from 'hooks';
-import { Task as TaskType } from 'models';
+import { ButtonStyle, Task as TaskType } from 'models';
 
 import { TaskButtonsContainer, TaskContainer, TaskDescripton, TaskHeader, TaskHeading } from './styles';
 

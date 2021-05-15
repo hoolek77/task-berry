@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactComponent as PlusSvg } from 'assets/Plus.svg';
 import { Button, Loader, TaskAdd } from 'components';
-import { ButtonStyle } from 'components/Button/styles';
 import { TasksList } from 'components/TasksList';
 import { useTasks, useUser } from 'hooks';
 import { useNotifications } from 'hooks/useNotifications';
+import { ButtonStyle } from 'models';
 import { getTasksThunk } from 'store/reducers/tasks';
 
 import { HomeContainer, TasksContainer, TasksHeader, TasksLoader } from './styles';

@@ -1,10 +1,10 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
-import { ButtonStyle } from 'components/Button/styles';
 import { Input } from 'components/Input';
 import { useUser } from 'hooks';
 import { useNotifications } from 'hooks/useNotifications';
+import { ButtonStyle } from 'models';
 import { api } from 'utils';
 
 import { SignUpContainer, SignUpHeader } from './styles';

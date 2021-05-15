@@ -1,14 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { Notification, Severity } from '../../models';
+import { Notification, NotificationsState } from '../../models';
 
-export type InitialNotificationsState = {
-  severity: Severity;
-  message: string;
-  open: boolean;
-};
-
-const initialState: InitialNotificationsState = {
+const initialState: NotificationsState = {
   severity: 'success',
   message: '',
   open: false,

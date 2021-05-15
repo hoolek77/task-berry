@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { CreateTaskType } from 'store/reducers/tasks';
+import { CreateTaskType } from 'models';
 
 import { ColorBox } from './styles';
 

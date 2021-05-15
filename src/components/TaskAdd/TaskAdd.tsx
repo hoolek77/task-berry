@@ -1,13 +1,12 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import { Button } from 'components/Button';
-import { ButtonStyle } from 'components/Button/styles';
 import { Input } from 'components/Input';
 import { Popup } from 'components/Popup';
 import { PopupOverlay } from 'components/PopupOverlay';
 import { TaskColor } from 'components/TaskColor';
 import { colors } from 'constants/colors';
 import { useTasks, useUser } from 'hooks';
-import { CreateTaskType } from 'store/reducers/tasks';
+import { ButtonStyle, CreateTaskType } from 'models';
 
 import { AddTaskHeader, ColorsContainer } from './styles';
 

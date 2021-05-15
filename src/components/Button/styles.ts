@@ -1,13 +1,5 @@
+import { ButtonStyle } from 'models';
 import styled, { css } from 'styled-components';
-
-export enum ButtonStyle {
-  SUBMIT_MAIN = 'submit-main',
-  SUBMIT_SECONDARY = 'submit-secondary',
-  TASK_SUBMIT = 'task-submit',
-  TASK_ADD = 'task-add',
-  TASK_FINISH = 'task-finish',
-  TASK_DELETE = 'task-delete',
-}
 
 type CustomButtonProps = {
   buttonStyle: ButtonStyle;

@@ -1,28 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { COOKIE_TOKEN, LS_EMAIL, LS_USERNAME } from 'constants/api';
+import { UserPayload, UserSignIn, UserState } from 'models';
 import { api, getCookieValue, removeCookie, saveCookie } from 'utils';
 
-export type InitialUserState = {
-  email: string | null;
-  name: string;
-  accessToken: string;
-  isLoading: boolean;
-  isSuccess: boolean;
-  isError: boolean;
-};
-
-export type UserSignIn = {
-  email: string;
-  password: string;
-};
-
-export type UserPayload = {
-  email: string;
-  name: string;
-  accessToken: string;
-};
-
-const initialState: InitialUserState = {
+const initialState: UserState = {
   email: localStorage.getItem(LS_EMAIL) || '',
   name: localStorage.getItem(LS_USERNAME) || '',
   accessToken: getCookieValue(COOKIE_TOKEN) || '',
