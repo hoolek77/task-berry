@@ -18,7 +18,6 @@ export const TaskContainer = styled.li`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-width: 400px;
   width: 400px;
   height: 200px;
   font-size: 1.2rem;
@@ -31,6 +30,10 @@ export const TaskContainer = styled.li`
   opacity: ${(props: { finished: boolean }) => (props.finished ? '0.7' : '1')};
   span {
     margin-left: 20px;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
   }
 `;
 

@@ -32,6 +32,6 @@ export const PopupContainer = styled.div`
     align-items: center;
   }
   @media (max-width: 800px) {
-    width: 95%;
+    max-width: 95%;
   }
 `;

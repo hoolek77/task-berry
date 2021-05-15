@@ -60,6 +60,7 @@ export const TasksContainer = styled.ul`
     border-radius: 0 0 10px 10px;
   }
   @media (max-width: 800px) {
+    max-height: calc(100vh - 210px);
     position: static;
     margin-top: 30px;
     padding-left: 1px;
