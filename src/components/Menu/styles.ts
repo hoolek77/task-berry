@@ -5,6 +5,7 @@ export const MenuContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 130px;
   height: 100%;
   word-wrap: normal;
@@ -31,13 +32,14 @@ export const MenuContainer = styled.div`
 `;
 
 export const NavigationPanel = styled.div`
+  position: absolute;
+  top: calc(50% - 75px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 250px;
-  margin-top: 150px;
+  height: 150px;
 `;
 
 export const NavigationItem = styled(Link)<{ isactive: boolean }>`

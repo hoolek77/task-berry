@@ -46,7 +46,7 @@ const MenuComponent = ({ name, location }: Props) => {
             <Settings />
           </NavigationItem>
         </NavigationPanel>
-        <Logout onClick={signOut} />
+        <Logout onClick={signOut} style={{ position: 'absolute', bottom: '30px' }} />
       </HamburgerMenu>
       <UserInfo>Hi there, {name}</UserInfo>
     </>

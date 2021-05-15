@@ -46,7 +46,6 @@ export const HamburgerMenuContainer = styled.div<{ isMenu: boolean }>`
   left: 0;
   top: 0;
   z-index: 100;
-  padding-top: 170px;
   padding-bottom: 40px;
   transition: all 0.3s ease-in-out;
   svg {
