@@ -27,10 +27,10 @@ const MenuComponent = ({ name, location }: Props) => {
         <span>TASK</span>
         <span>BERRY</span>
         <NavigationPanel>
-          <NavigationItem to="/home" isactive={checkRoute('/home')}>
+          <NavigationItem to="/home" isActive={checkRoute('/home')}>
             <Home />
           </NavigationItem>
-          <NavigationItem to="/settings" isactive={checkRoute('/settings')}>
+          <NavigationItem to="/settings" isActive={checkRoute('/settings')}>
             <Settings />
           </NavigationItem>
         </NavigationPanel>
@@ -39,10 +39,10 @@ const MenuComponent = ({ name, location }: Props) => {
 
       <HamburgerMenu isMenu={isMenu} setIsMenu={setIsMenu}>
         <NavigationPanel>
-          <NavigationItem to="/home" isactive={checkRoute('/home')} onClick={() => setIsMenu(false)}>
+          <NavigationItem to="/home" isActive={checkRoute('/home')} onClick={() => setIsMenu(false)}>
             <Home />
           </NavigationItem>
-          <NavigationItem to="/settings" isactive={checkRoute('/settings')} onClick={() => setIsMenu(false)}>
+          <NavigationItem to="/settings" isActive={checkRoute('/settings')} onClick={() => setIsMenu(false)}>
             <Settings />
           </NavigationItem>
         </NavigationPanel>

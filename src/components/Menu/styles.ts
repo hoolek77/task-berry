@@ -42,13 +42,13 @@ export const NavigationPanel = styled.div`
   height: 150px;
 `;
 
-export const NavigationItem = styled(Link)<{ isactive: boolean }>`
+export const NavigationItem = styled(Link)<{ isActive: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50px;
   height: 50px;
-  background-color: ${(props) => (props.isactive ? props.theme.customWhite : '')};
+  background-color: ${(props) => (props.isActive ? props.theme.customWhite : '')};
   border-radius: 15px;
   cursor: pointer;
   transition-duration: 200ms;
@@ -57,7 +57,7 @@ export const NavigationItem = styled(Link)<{ isactive: boolean }>`
     margin: 0;
   }
   &:hover {
-    ${(props) => (props.isactive ? '' : 'background-color: rgba(241, 241, 241, 0.6)')};
+    ${(props) => (props.isActive ? '' : 'background-color: rgba(241, 241, 241, 0.6)')};
   }
   &:active {
     svg {
