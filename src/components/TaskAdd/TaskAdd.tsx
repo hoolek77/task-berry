@@ -15,7 +15,7 @@ interface Props {
 }
 
 const TaskAdd = ({ setIsPopup }: Props) => {
-  const { addTask } = useTasks();
+  const { addTask, isLoading } = useTasks();
   const [task, setTask] = useState<CreateTaskType>({ title: '', description: '', color: '' });
   const { title, description, color } = task;
   const { accessToken } = useUser();
@@ -52,7 +52,7 @@ const TaskAdd = ({ setIsPopup }: Props) => {
               <TaskColor key={item.id} selectedColor={color} color={item.color} setTask={setTask} />
             ))}
           </ColorsContainer>
-          <Button type="submit" buttonStyle={ButtonStyle.SUBMIT_MAIN}>
+          <Button type="submit" buttonStyle={ButtonStyle.SUBMIT_MAIN} disabled={isLoading}>
             Add Task
           </Button>
         </form>

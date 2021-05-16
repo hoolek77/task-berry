@@ -12,7 +12,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
 
 const Button = ({ children, buttonStyle, isLoading = false, ...rest }: ButtonProps) => {
   return (
-    <CustomButton buttonStyle={buttonStyle} {...rest} disabled={isLoading}>
+    <CustomButton buttonStyle={buttonStyle} {...rest}>
       {isLoading ? <Loader size={28} /> : children}
     </CustomButton>
   );
