@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, useHistory, withRouter } from 'react-router-dom';
 import { ReactComponent as Home } from 'assets/Home.svg';
 import { ReactComponent as Logout } from 'assets/Logout.svg';
 import { ReactComponent as Settings } from 'assets/Settings.svg';
@@ -13,12 +13,18 @@ interface Props extends RouteComponentProps {
 }
 
 const MenuComponent = ({ name, location }: Props) => {
+  const history = useHistory();
   const { signOut } = useUser();
   const [isMenu, setIsMenu] = useState(false);
 
   const checkRoute = (pathname: string) => {
     const isActive = location.pathname === pathname;
     return isActive;
+  };
+
+  const logOut = () => {
+    signOut();
+    history.push('/');
   };
 
   return (
@@ -34,7 +40,7 @@ const MenuComponent = ({ name, location }: Props) => {
             <Settings />
           </NavigationItem>
         </NavigationPanel>
-        <Logout onClick={signOut} />
+        <Logout onClick={logOut} />
       </MenuContainer>
 
       <HamburgerMenu isMenu={isMenu} setIsMenu={setIsMenu}>
@@ -46,7 +52,7 @@ const MenuComponent = ({ name, location }: Props) => {
             <Settings />
           </NavigationItem>
         </NavigationPanel>
-        <Logout onClick={signOut} style={{ position: 'absolute', bottom: '30px' }} />
+        <Logout onClick={logOut} style={{ position: 'absolute', bottom: '30px' }} />
       </HamburgerMenu>
       <UserInfo>Hi there, {name}</UserInfo>
     </>

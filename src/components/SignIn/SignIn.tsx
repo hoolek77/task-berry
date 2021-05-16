@@ -1,10 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { useUser } from 'hooks';
-import { useNotifications } from 'hooks/useNotifications';
 import { ButtonStyle, UserSignIn } from 'models';
+import { openNotification } from 'store/reducers/notifications';
 
 import { SignInContainer, SignInHeader } from './styles';
 
@@ -13,9 +14,9 @@ interface SignInProps {
 }
 
 export const SignIn = ({ setIsSignUp }: SignInProps) => {
-  const { isError, isSuccess, isLoading, signIn } = useUser();
-  const { openNotification } = useNotifications();
+  const dispatch = useDispatch();
   const history = useHistory();
+  const { isLoading, signIn, isError, isSuccess } = useUser();
   const [user, setUser] = useState<UserSignIn>({ email: '', password: '' });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -26,14 +27,14 @@ export const SignIn = ({ setIsSignUp }: SignInProps) => {
 
   useEffect(() => {
     if (isError) {
-      openNotification({ severity: 'error', message: 'Unable to login!' });
+      dispatch(openNotification({ severity: 'error', message: 'Unable to login!' }));
     }
 
     if (isSuccess) {
-      openNotification({ severity: 'success', message: 'Log in successful!' });
+      dispatch(openNotification({ severity: 'success', message: 'Log in successful!' }));
       history.push('/home');
     }
-  }, [isError, isSuccess, openNotification, history]);
+  }, [isError, isSuccess, dispatch, history]);
 
   return (
     <SignInContainer>
@@ -55,10 +56,14 @@ export const SignIn = ({ setIsSignUp }: SignInProps) => {
           value={user.password}
           onChange={(e) => setUser((prevState) => ({ ...prevState, password: e.target.value }))}
         />
-        <Button buttonStyle={ButtonStyle.SUBMIT_MAIN} type="submit" isLoading={isLoading}>
+        <Button buttonStyle={ButtonStyle.SUBMIT_MAIN} type="submit" isLoading={isLoading} disabled={isLoading}>
           Sign In
         </Button>
-        <Button buttonStyle={ButtonStyle.SUBMIT_SECONDARY} onClick={() => setIsSignUp((prev) => !prev)}>
+        <Button
+          buttonStyle={ButtonStyle.SUBMIT_SECONDARY}
+          onClick={() => setIsSignUp((prev) => !prev)}
+          disabled={isLoading}
+        >
           Sign Up
         </Button>
       </form>

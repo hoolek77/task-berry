@@ -44,6 +44,10 @@ const userModule = createSlice({
       removeCookie(COOKIE_TOKEN);
       state.accessToken = '';
     },
+    reset(state) {
+      state.isError = false;
+      state.isSuccess = false;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(signInThunk.fulfilled, (state, { payload }: { payload: UserPayload }) => {
@@ -63,6 +67,6 @@ const userModule = createSlice({
   },
 });
 
-export const { signOut } = userModule.actions;
+export const { signOut, reset } = userModule.actions;
 
 export { userModule };

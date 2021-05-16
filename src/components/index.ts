@@ -8,3 +8,4 @@ export * from './Popup';
 export * from './PopupOverlay';
 export * from './TaskAdd';
 export * from './Menu';
+export * from './UnprotectedRoute';

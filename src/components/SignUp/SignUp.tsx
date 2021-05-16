@@ -1,10 +1,11 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { useUser } from 'hooks';
-import { useNotifications } from 'hooks/useNotifications';
 import { ButtonStyle } from 'models';
+import { openNotification } from 'store/reducers/notifications';
 import { api } from 'utils';
 
 import { SignUpContainer, SignUpHeader } from './styles';
@@ -21,9 +22,9 @@ export interface SignUpData {
 }
 
 const SignUp = ({ setIsSignUp }: SignUpProps) => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const { signIn, isSuccess, isError } = useUser();
-  const { openNotification } = useNotifications();
   const [{ email, name, password, passwordRepeat }, setSignUpData] = useState<SignUpData>({
     email: '',
     name: '',
@@ -40,21 +41,21 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
       signIn({ email, password });
       setIsLoading(false);
     } catch (ex) {
-      openNotification({ severity: 'error', message: 'Something went wrong while creating your account.' });
+      dispatch(openNotification({ severity: 'error', message: 'Something went wrong while creating your account.' }));
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
     if (isSuccess) {
-      openNotification({ severity: 'success', message: 'Sign up successful!' });
+      dispatch(openNotification({ severity: 'success', message: 'Sign up successful!' }));
       history.push('/home');
     }
 
     if (isError) {
-      openNotification({ severity: 'error', message: 'Unable to login!' });
+      dispatch(openNotification({ severity: 'error', message: 'Unable to login!' }));
     }
-  }, [isSuccess, isError, openNotification, history]);
+  }, [isSuccess, isError, dispatch, history]);
 
   return (
     <SignUpContainer>
@@ -101,6 +102,7 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           type="button"
           buttonStyle={ButtonStyle.SUBMIT_SECONDARY}
           onClick={() => setIsSignUp((prev: boolean) => !prev)}
+          isLoading={isLoading}
         >
           Sign In
         </Button>

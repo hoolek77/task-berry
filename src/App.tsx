@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Menu, Notification, ProtectedRoute } from 'components';
+import { Menu, Notification, ProtectedRoute, UnprotectedRoute } from 'components';
 import { useUser } from 'hooks';
 import { Home, Landing, UserSettings } from 'views';
 import { NotFound } from 'views/NotFound';
@@ -13,9 +13,9 @@ const App: FC = () => {
       <BrowserRouter>
         {accessToken && <Menu name={name} />}
         <Switch>
-          <Route path="/" exact>
-            <Landing accessToken={accessToken} />
-          </Route>
+          <UnprotectedRoute path="/" exact>
+            <Landing />
+          </UnprotectedRoute>
           <ProtectedRoute path="/home" exact>
             <Home />
           </ProtectedRoute>
