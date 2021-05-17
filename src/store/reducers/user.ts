@@ -42,6 +42,8 @@ const userModule = createSlice({
   reducers: {
     signOut(state) {
       removeCookie(COOKIE_TOKEN);
+      localStorage.removeItem(LS_EMAIL);
+      localStorage.removeItem(LS_USERNAME);
       state.accessToken = '';
     },
     reset(state) {

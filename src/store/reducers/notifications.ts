@@ -13,10 +13,12 @@ const notificationsModule = createSlice({
   initialState,
   reducers: {
     openNotification: (state, { payload }: { payload: Notification }) => {
-      return { ...payload, open: true };
+      state.open = true;
+      state.message = payload.message;
+      state.severity = payload.severity;
     },
     closeNotification: (state) => {
-      return { ...state, open: false };
+      state.open = false;
     },
   },
 });

@@ -13,6 +13,7 @@ import { HomeContainer, TasksContainer, TasksHeader, TasksLoader } from './style
 const Home = () => {
   const dispatch = useDispatch();
   const { tasks, isError, isLoading } = useTasks();
+  const { isSuccess } = useUser();
   const { openNotification } = useNotifications();
   const { accessToken } = useUser();
   const [isPopup, setIsPopup] = useState(false);
@@ -25,7 +26,11 @@ const Home = () => {
     if (isError) {
       openNotification({ severity: 'error', message: 'Something went wrong!' });
     }
-  });
+
+    if (isSuccess) {
+      openNotification({ severity: 'success', message: 'Log in successful!' });
+    }
+  }, [isError, isSuccess, openNotification]);
 
   return (
     <HomeContainer>

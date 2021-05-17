@@ -1,11 +1,9 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
-import { useUser } from 'hooks';
+import { useNotifications, useUser } from 'hooks';
 import { ButtonStyle, UserSignIn } from 'models';
-import { openNotification } from 'store/reducers/notifications';
 
 import { SignInContainer, SignInHeader } from './styles';
 
@@ -14,8 +12,8 @@ interface SignInProps {
 }
 
 export const SignIn = ({ setIsSignUp }: SignInProps) => {
-  const dispatch = useDispatch();
   const history = useHistory();
+  const { openNotification } = useNotifications();
   const { isLoading, signIn, isError, isSuccess } = useUser();
   const [user, setUser] = useState<UserSignIn>({ email: '', password: '' });
 
@@ -27,14 +25,9 @@ export const SignIn = ({ setIsSignUp }: SignInProps) => {
 
   useEffect(() => {
     if (isError) {
-      dispatch(openNotification({ severity: 'error', message: 'Unable to login!' }));
+      openNotification({ severity: 'error', message: 'Unable to login!' });
     }
-
-    if (isSuccess) {
-      dispatch(openNotification({ severity: 'success', message: 'Log in successful!' }));
-      history.push('/home');
-    }
-  }, [isError, isSuccess, dispatch, history]);
+  }, [isError, isSuccess, history, openNotification]);
 
   return (
     <SignInContainer>

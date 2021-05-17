@@ -9,8 +9,8 @@ const useUser = () => {
     (state) => state.user,
   );
 
-  const signIn = (user: UserSignIn) => {
-    dispatch(signInThunk(user));
+  const signIn = async (user: UserSignIn) => {
+    await dispatch(signInThunk(user));
     dispatch(reset());
   };
 
