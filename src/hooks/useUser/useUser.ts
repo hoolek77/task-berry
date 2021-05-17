@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { UserSignIn, UserState } from 'models';
 import { RootState } from 'store';
-import { reset, signInThunk, signOut as signOutAction } from 'store/reducers/user';
+import { resetTasksToInitial } from 'store/reducers/tasks';
+import { resetAsyncUserState, signInThunk, signOut as signOutAction } from 'store/reducers/user';
 
 const useUser = () => {
   const dispatch = useDispatch();
@@ -11,12 +12,13 @@ const useUser = () => {
 
   const signIn = async (user: UserSignIn) => {
     await dispatch(signInThunk(user));
-    dispatch(reset());
+    dispatch(resetAsyncUserState());
   };
 
   const signOut = () => {
     dispatch(signOutAction());
-    dispatch(reset());
+    dispatch(resetTasksToInitial());
+    dispatch(resetAsyncUserState());
   };
 
   return {

@@ -44,11 +44,13 @@ const userModule = createSlice({
       removeCookie(COOKIE_TOKEN);
       localStorage.removeItem(LS_EMAIL);
       localStorage.removeItem(LS_USERNAME);
+      state.email = '';
+      state.name = '';
       state.accessToken = '';
     },
-    reset(state) {
-      state.isError = false;
+    resetAsyncUserState(state) {
       state.isSuccess = false;
+      state.isError = false;
     },
   },
   extraReducers: (builder) => {
@@ -69,6 +71,6 @@ const userModule = createSlice({
   },
 });
 
-export const { signOut, reset } = userModule.actions;
+export const { signOut, resetAsyncUserState } = userModule.actions;
 
 export { userModule };

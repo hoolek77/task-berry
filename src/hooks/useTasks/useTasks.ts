@@ -1,26 +1,37 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useUser } from 'hooks/useUser';
 import { CreateTaskType, TasksState } from 'models';
 import { RootState } from 'store';
-import { addTaskThunk, deleteTaskThunk, getTasksThunk, updateFinishedTaskThunk } from 'store/reducers/tasks';
+import {
+  addTaskThunk,
+  deleteTaskThunk,
+  getTasksThunk,
+  resetAsyncTasksState,
+  updateFinishedTaskThunk,
+} from 'store/reducers/tasks';
 
 const useTasks = () => {
   const dispatch = useDispatch();
+  const { accessToken } = useUser();
   const { tasks, isError, isLoading, isSuccess } = useSelector<RootState, TasksState>((state) => state.tasks);
 
-  const addTask = (task: CreateTaskType, accessToken: string) => {
-    dispatch(addTaskThunk({ task, accessToken }));
+  const getTasks = async () => {
+    await dispatch(getTasksThunk(accessToken));
+    dispatch(resetAsyncTasksState());
   };
 
-  const getTasks = (accessToken: string) => {
-    dispatch(getTasksThunk(accessToken));
+  const addTask = async (task: CreateTaskType) => {
+    await dispatch(addTaskThunk({ task, accessToken }));
+    dispatch(resetAsyncTasksState());
+  };
+  const finishTask = async (id: string) => {
+    await dispatch(updateFinishedTaskThunk({ id, accessToken }));
+    dispatch(resetAsyncTasksState());
   };
 
-  const finishTask = (id: string, accessToken: string) => {
-    dispatch(updateFinishedTaskThunk({ id, accessToken }));
-  };
-
-  const deleteTask = (id: string, accessToken: string) => {
-    dispatch(deleteTaskThunk({ id, accessToken }));
+  const deleteTask = async (id: string) => {
+    await dispatch(deleteTaskThunk({ id, accessToken }));
+    dispatch(resetAsyncTasksState());
   };
 
   return {

@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { useNotifications, useUser } from 'hooks';
@@ -12,7 +11,6 @@ interface SignInProps {
 }
 
 export const SignIn = ({ setIsSignUp }: SignInProps) => {
-  const history = useHistory();
   const { openNotification } = useNotifications();
   const { isLoading, signIn, isError, isSuccess } = useUser();
   const [user, setUser] = useState<UserSignIn>({ email: '', password: '' });
@@ -27,7 +25,7 @@ export const SignIn = ({ setIsSignUp }: SignInProps) => {
     if (isError) {
       openNotification({ severity: 'error', message: 'Unable to login!' });
     }
-  }, [isError, isSuccess, history, openNotification]);
+  }, [isError, isSuccess, openNotification]);
 
   return (
     <SignInContainer>

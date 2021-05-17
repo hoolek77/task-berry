@@ -5,7 +5,7 @@ import { Popup } from 'components/Popup';
 import { PopupOverlay } from 'components/PopupOverlay';
 import { TaskColor } from 'components/TaskColor';
 import { colors } from 'constants/colors';
-import { useTasks, useUser } from 'hooks';
+import { useTasks } from 'hooks';
 import { ButtonStyle, CreateTaskType } from 'models';
 
 import { AddTaskHeader, ColorsContainer } from './styles';
@@ -18,11 +18,10 @@ const TaskAdd = ({ setIsPopup }: Props) => {
   const { addTask, isLoading } = useTasks();
   const [task, setTask] = useState<CreateTaskType>({ title: '', description: '', color: colors[0].color });
   const { title, description, color } = task;
-  const { accessToken } = useUser();
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    addTask(task, accessToken);
+    addTask(task);
     setIsPopup(false);
   };
 

@@ -88,7 +88,15 @@ export const deleteTaskThunk = createAsyncThunk(
 const taskModule = createSlice({
   name: 'taskModule',
   initialState,
-  reducers: {},
+  reducers: {
+    resetTasksToInitial() {
+      return initialState;
+    },
+    resetAsyncTasksState(state) {
+      state.isSuccess = false;
+      state.isError = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getTasksThunk.fulfilled, (state, { payload }: { payload: Task[] }) => {
       state.isLoading = false;
@@ -154,5 +162,7 @@ const taskModule = createSlice({
     });
   },
 });
+
+export const { resetTasksToInitial, resetAsyncTasksState } = taskModule.actions;
 
 export { taskModule };

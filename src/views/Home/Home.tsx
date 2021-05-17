@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { ReactComponent as PlusSvg } from 'assets/Plus.svg';
 import { Button, Loader, TaskAdd } from 'components';
 import { TasksList } from 'components/TasksList';
 import { useTasks, useUser } from 'hooks';
 import { useNotifications } from 'hooks/useNotifications';
 import { ButtonStyle } from 'models';
-import { getTasksThunk } from 'store/reducers/tasks';
 
 import { HomeContainer, TasksContainer, TasksHeader, TasksLoader } from './styles';
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const { tasks, isError, isLoading } = useTasks();
+  const { tasks, isError, isLoading, getTasks } = useTasks();
   const { isSuccess } = useUser();
   const { openNotification } = useNotifications();
   const { accessToken } = useUser();
   const [isPopup, setIsPopup] = useState(false);
 
   useEffect(() => {
-    dispatch(getTasksThunk(accessToken));
-  }, [accessToken, dispatch]);
+    if (tasks.length === 0) {
+      getTasks();
+    }
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
+  }, [accessToken]);
 
   useEffect(() => {
     if (isError) {

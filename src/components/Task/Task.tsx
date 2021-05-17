@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'components/Button';
-import { useTasks, useUser } from 'hooks';
+import { useTasks } from 'hooks';
 import { ButtonStyle, Task as TaskType } from 'models';
 
 import { TaskButtonsContainer, TaskContainer, TaskDescripton, TaskHeader, TaskHeading } from './styles';
@@ -11,7 +11,6 @@ interface Props {
 
 const Task = ({ task: { _id, title, finished, description, color } }: Props) => {
   const { finishTask, deleteTask } = useTasks();
-  const { accessToken } = useUser();
 
   return (
     <TaskContainer finished={finished}>
@@ -20,10 +19,10 @@ const Task = ({ task: { _id, title, finished, description, color } }: Props) => 
       </TaskHeader>
       <TaskDescripton>{description}</TaskDescripton>
       <TaskButtonsContainer>
-        <Button buttonStyle={ButtonStyle.TASK_FINISH} color={color} onClick={() => finishTask(_id, accessToken)}>
+        <Button buttonStyle={ButtonStyle.TASK_FINISH} color={color} onClick={() => finishTask(_id)}>
           {finished ? 'Undo' : 'Finish'}
         </Button>
-        <Button buttonStyle={ButtonStyle.TASK_DELETE} onClick={() => deleteTask(_id, accessToken)}>
+        <Button buttonStyle={ButtonStyle.TASK_DELETE} onClick={() => deleteTask(_id)}>
           Delete
         </Button>
       </TaskButtonsContainer>
