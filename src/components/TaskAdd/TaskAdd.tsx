@@ -16,7 +16,7 @@ interface Props {
 
 const TaskAdd = ({ setIsPopup }: Props) => {
   const { addTask, isLoading } = useTasks();
-  const [task, setTask] = useState<CreateTaskType>({ title: '', description: '', color: '' });
+  const [task, setTask] = useState<CreateTaskType>({ title: '', description: '', color: colors[0].color });
   const { title, description, color } = task;
   const { accessToken } = useUser();
 

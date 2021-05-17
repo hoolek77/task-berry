@@ -1,11 +1,9 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
-import { useUser } from 'hooks';
+import { useNotifications, useUser } from 'hooks';
 import { ButtonStyle } from 'models';
-import { openNotification } from 'store/reducers/notifications';
 import { api } from 'utils';
 
 import { SignUpContainer, SignUpHeader } from './styles';
@@ -22,8 +20,8 @@ export interface SignUpData {
 }
 
 const SignUp = ({ setIsSignUp }: SignUpProps) => {
-  const dispatch = useDispatch();
   const history = useHistory();
+  const { openNotification } = useNotifications();
   const { signIn, isSuccess, isError } = useUser();
   const [{ email, name, password, passwordRepeat }, setSignUpData] = useState<SignUpData>({
     email: '',
@@ -33,29 +31,65 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
+  const validate = () => {
+    if (name.length < 2 || name.length > 60) {
+      return openNotification({
+        severity: 'error',
+        message: 'Name should be minimum 2 characters and maximum 60 characters.',
+      });
+    }
+
+    if (email.length < 10 || email.length > 60) {
+      return openNotification({
+        severity: 'error',
+        message: 'Email should be minimum 10 characters and maximum 60 characters.',
+      });
+    }
+
+    if (!/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password)) {
+      return openNotification({
+        severity: 'error',
+        message:
+          'Password must be from 8 to 20 symbol length and matches at min: one symbol A-Z, one a-z and number or characters _, -',
+      });
+    }
+
+    if (password !== passwordRepeat) {
+      return openNotification({
+        severity: 'error',
+        message: 'Passwords are not the same!',
+      });
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+
+    if (validate() !== true) return;
+
     try {
       setIsLoading(true);
       await api.post('/auth/signup', { email, name, password });
       signIn({ email, password });
       setIsLoading(false);
     } catch (ex) {
-      dispatch(openNotification({ severity: 'error', message: 'Something went wrong while creating your account.' }));
+      openNotification({ severity: 'error', message: 'Something went wrong while creating your account.' });
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(openNotification({ severity: 'success', message: 'Sign up successful!' }));
+      openNotification({ severity: 'success', message: 'Sign up successful!' });
       history.push('/home');
     }
 
     if (isError) {
-      dispatch(openNotification({ severity: 'error', message: 'Unable to login!' }));
+      openNotification({ severity: 'error', message: 'Unable to login!' });
     }
-  }, [isSuccess, isError, dispatch, history]);
+  }, [isSuccess, isError, openNotification, history]);
 
   return (
     <SignUpContainer>
