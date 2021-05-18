@@ -5,6 +5,8 @@ import { ReactComponent as Logout } from 'assets/Logout.svg';
 import { ReactComponent as Settings } from 'assets/Settings.svg';
 import { HamburgerMenu } from 'components/HamburgerMenu';
 import { useUser } from 'hooks';
+import { useTheme } from 'styled-components';
+import { ThemeContentType } from 'styles/theme';
 
 import { MenuContainer, NavigationItem, NavigationPanel, UserInfo } from './styles';
 
@@ -14,6 +16,7 @@ interface Props extends RouteComponentProps {
 
 const MenuComponent = ({ name, location }: Props) => {
   const history = useHistory();
+  const theme = useTheme() as ThemeContentType;
   const { signOut } = useUser();
   const [isMenu, setIsMenu] = useState(false);
 
@@ -34,10 +37,10 @@ const MenuComponent = ({ name, location }: Props) => {
         <span>BERRY</span>
         <NavigationPanel>
           <NavigationItem to="/home" isActive={checkRoute('/home')}>
-            <Home />
+            <Home fill={theme.fontPrimary} />
           </NavigationItem>
           <NavigationItem to="/settings" isActive={checkRoute('/settings')}>
-            <Settings />
+            <Settings fill={theme.fontPrimary} />
           </NavigationItem>
         </NavigationPanel>
         <Logout onClick={logOut} />
@@ -46,10 +49,10 @@ const MenuComponent = ({ name, location }: Props) => {
       <HamburgerMenu isMenu={isMenu} setIsMenu={setIsMenu}>
         <NavigationPanel>
           <NavigationItem to="/home" isActive={checkRoute('/home')} onClick={() => setIsMenu(false)}>
-            <Home />
+            <Home fill={theme.fontPrimary} />
           </NavigationItem>
           <NavigationItem to="/settings" isActive={checkRoute('/settings')} onClick={() => setIsMenu(false)}>
-            <Settings />
+            <Settings fill={theme.fontPrimary} />
           </NavigationItem>
         </NavigationPanel>
         <Logout onClick={logOut} style={{ position: 'absolute', bottom: '30px' }} />

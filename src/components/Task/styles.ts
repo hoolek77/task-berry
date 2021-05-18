@@ -22,7 +22,7 @@ export const TaskContainer = styled.li`
   height: 200px;
   font-size: 1.2rem;
   overflow: hidden;
-  background-color: ${(props) => props.theme.customWhite};
+  background-color: ${(props) => props.theme.backgroundSecondary};
   box-shadow: 0px 3px 10px rgba(4, 4, 4, 0.3);
   border-radius: 12px;
   margin-bottom: 65px;

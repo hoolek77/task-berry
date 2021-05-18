@@ -22,7 +22,7 @@ export const PopupContainer = styled.div`
   top: calc(50% - 250px);
   margin: 0 auto;
   z-index: 100;
-  background-color: ${(props) => props.theme.customWhite};
+  background-color: ${(props) => props.theme.backgroundPrimary};
   box-shadow: 1px 2px 15px 1px rgba(4, 4, 4, 0.3);
   border-radius: 8px;
   animation: ${show} 150ms ease-in;

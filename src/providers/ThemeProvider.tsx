@@ -1,23 +1,25 @@
-import { createContext, FC, useState } from 'react';
+import { createContext, Dispatch, FC, SetStateAction, useState } from 'react';
+import { LS_THEME } from 'constants/theme';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { theme } from 'styles/theme';
 
-const ThemeContext = createContext([{}, () => {}]);
+type ThemeType = 'dark' | 'light';
+
+type ThemeContextType = {
+  theme: string;
+  setThemeState: Dispatch<SetStateAction<ThemeType>>;
+};
+
+const ThemeContext = createContext<ThemeContextType>({
+  theme: 'dark',
+  setThemeState: () => {},
+});
 
 const ThemeProvider: FC = ({ children }) => {
-  const [themeState, setThemeState] = useState<'light' | 'dark'>('light');
-
-  const switchTheme = () => {
-    setThemeState((prevState) => {
-      if (prevState === 'light') {
-        return 'dark';
-      }
-      return 'light';
-    });
-  };
+  const [themeState, setThemeState] = useState<ThemeType>((localStorage.getItem(LS_THEME) as ThemeType) || 'dark');
 
   return (
-    <ThemeContext.Provider value={[themeState, switchTheme]}>
+    <ThemeContext.Provider value={{ theme: themeState, setThemeState }}>
       <StyledThemeProvider theme={theme[themeState]}>{children}</StyledThemeProvider>
     </ThemeContext.Provider>
   );

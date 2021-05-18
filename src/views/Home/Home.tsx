@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as PlusSvg } from 'assets/Plus.svg';
-import { Button, Loader, TaskAdd } from 'components';
+import { Button, Loader, PageWrapper, TaskAdd } from 'components';
 import { TasksList } from 'components/TasksList';
 import { useTasks, useUser } from 'hooks';
 import { useNotifications } from 'hooks/useNotifications';
 import { ButtonStyle } from 'models';
 
-import { HomeContainer, TasksContainer, TasksHeader, TasksLoader } from './styles';
+import { TasksContainer, TasksHeader, TasksLoader } from './styles';
 
 const Home = () => {
   const { tasks, isError, isLoading, getTasks } = useTasks();
@@ -33,7 +33,7 @@ const Home = () => {
   }, [isError, isSuccess, openNotification]);
 
   return (
-    <HomeContainer>
+    <PageWrapper>
       <TasksHeader>
         Total Tasks
         <p>
@@ -54,7 +54,7 @@ const Home = () => {
         <PlusSvg />
       </Button>
       {isPopup && <TaskAdd setIsPopup={setIsPopup} />}
-    </HomeContainer>
+    </PageWrapper>
   );
 };
 

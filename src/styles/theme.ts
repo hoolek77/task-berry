@@ -1,18 +1,18 @@
-const common = {
-  customWhite: '#F1F1F1',
-  customBlack: '#14181B',
-};
-
 export const theme = {
   light: {
     primary: '#a5acfb',
-    secondary: '#b5ddff',
-    ...common,
+    backgroundPrimary: '#F1F1F1',
+    backgroundSecondary: '#F1F1F1',
+    fontPrimary: '#14181B',
+    loader: '#963757',
   },
   dark: {
-    ...common,
+    primary: '#8b4367',
+    backgroundPrimary: '#151515',
+    backgroundSecondary: '#322f3d',
+    fontPrimary: '#FFFAFA',
+    loader: '#FFF0F5',
   },
 };
 
-export type ThemeTypeLight = typeof theme.light;
-export type ThemeTypeDark = typeof theme.dark;
+export type ThemeContentType = typeof theme.light;

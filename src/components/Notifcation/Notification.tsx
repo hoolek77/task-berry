@@ -1,6 +1,7 @@
 import { Snackbar } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
-import { useNotifications } from 'hooks/useNotifications';
+import { useNotifications } from 'hooks';
+
+import { StyledAlert } from './styles';
 
 export const Notification = () => {
   const { closeNotification, message, open, severity } = useNotifications();
@@ -15,9 +16,9 @@ export const Notification = () => {
 
   return (
     <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
-      <Alert onClose={handleClose} severity={severity}>
+      <StyledAlert onClose={handleClose} severity={severity}>
         {message}
-      </Alert>
+      </StyledAlert>
     </Snackbar>
   );
 };

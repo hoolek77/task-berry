@@ -48,7 +48,7 @@ export const NavigationItem = styled(Link)<{ isActive: boolean }>`
   justify-content: center;
   width: 50px;
   height: 50px;
-  background-color: ${(props) => (props.isActive ? props.theme.customWhite : '')};
+  background-color: ${(props) => (props.isActive ? props.theme.backgroundPrimary : '')};
   border-radius: 15px;
   cursor: pointer;
   transition-duration: 200ms;

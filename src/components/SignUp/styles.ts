@@ -16,7 +16,7 @@ export const SignUpContainer = styled.div`
   width: 450px;
   height: 580px;
   margin-top: 15px;
-  background-color: ${(props) => props.theme.customWhite};
+  background-color: ${(props) => props.theme.backgroundPrimary};
   border-radius: 8px;
   box-shadow: 1px 3px 15px 1px rgba(4, 4, 4, 0.35);
   animation: ${show} 300ms ease;

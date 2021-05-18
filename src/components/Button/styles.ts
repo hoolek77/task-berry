@@ -24,7 +24,7 @@ const submitSecondary = css`
   width: 180px;
   height: 35px;
   font-size: 1rem;
-  background-color: ${(props) => props.theme.customWhite};
+  background-color: ${(props) => props.theme.backgroundPrimary};
   border: 2px solid ${(props) => props.theme.primary};
   border-radius: 10px;
   &:hover {

@@ -1,15 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { ThemeTypeDark, ThemeTypeLight } from './theme';
+import { ThemeContentType } from './theme';
 
-const GlobalStyle = createGlobalStyle<{ theme: ThemeTypeLight | ThemeTypeDark }>`
+const GlobalStyle = createGlobalStyle<{ theme: ThemeContentType }>`
   *,
   *:before,
   *:after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: ${(props) => props.theme.customBlack};
+    color: ${(props) => props.theme.fontPrimary};
   }
 
   html {
@@ -22,8 +22,17 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeTypeLight | ThemeTypeDark }>
   body {
     margin: 0;
     padding: 0;
-    background-color: ${(props) => props.theme.customWhite};
+    background-color: ${({ theme }) => theme.backgroundPrimary};
   }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active  {
+    transition: background-color 5000s;
+    -webkit-text-fill-color: ${({ theme }) => theme.fontPrimary};
+  }
+
 `;
 
 export default GlobalStyle;
