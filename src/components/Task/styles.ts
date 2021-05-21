@@ -77,7 +77,6 @@ export const TaskDescripton = styled.p`
   }
   &::-webkit-scrollbar-thumb {
     background: ${(props) => props.theme.primary};
-    border-radius: 0 0 10px 10px;
   }
 `;
 

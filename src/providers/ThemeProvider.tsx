@@ -1,9 +1,9 @@
 import { createContext, Dispatch, FC, SetStateAction, useState } from 'react';
 import { LS_THEME } from 'constants/theme';
+import { ThemeType } from 'models';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { theme } from 'styles/theme';
-
-type ThemeType = 'dark' | 'light';
+import { isTheme } from 'utils/theme';
 
 type ThemeContextType = {
   theme: string;
@@ -16,7 +16,8 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 const ThemeProvider: FC = ({ children }) => {
-  const [themeState, setThemeState] = useState<ThemeType>((localStorage.getItem(LS_THEME) as ThemeType) || 'dark');
+  const THEME = localStorage.getItem(LS_THEME);
+  const [themeState, setThemeState] = useState<ThemeType>(isTheme(THEME) ? THEME : 'dark');
 
   return (
     <ThemeContext.Provider value={{ theme: themeState, setThemeState }}>

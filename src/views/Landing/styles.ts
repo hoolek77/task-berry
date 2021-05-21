@@ -39,15 +39,18 @@ export const Splash = styled.div`
     padding-left: 50px;
     margin-bottom: 40px;
   }
+
   @media (max-width: 1350px) {
     width: 0;
     height: 0;
+
     p,
     span {
       display: none;
       margin: 0;
       padding: 0;
     }
+
     svg {
       width: 100%;
       position: absolute;

@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 export const StyledAlert = styled(Alert)`
   &.MuiAlert-standardSuccess {
-    background-color: '#4BB543';
+    background-color: #4bb543;
   }
 
   &.MuiAlert-standardError {
-    background-color: '#6f0000';
+    background-color: #6f0000;
   }
 `;

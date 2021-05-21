@@ -1,5 +1,7 @@
 export type Severity = 'success' | 'info' | 'warning' | 'error';
 
+export type ThemeType = 'dark' | 'light';
+
 export type Notification = {
   severity: Severity;
   message: string;

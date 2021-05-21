@@ -14,6 +14,11 @@ export const TasksHeader = styled.div`
   span {
     color: ${(props) => props.theme.primary};
   }
+  svg {
+    position: absolute;
+    z-index: 100;
+    overflow: visible;
+  }
   @media (max-width: 800px) {
     position: static;
     margin-top: 120px;
@@ -48,7 +53,6 @@ export const TasksContainer = styled.ul`
   }
   &::-webkit-scrollbar-thumb {
     background: ${(props) => props.theme.primary};
-    border-radius: 0 0 10px 10px;
   }
   @media (max-width: 800px) {
     max-height: calc(100vh - 210px);
