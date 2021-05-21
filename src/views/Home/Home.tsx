@@ -1,25 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as PlusSvg } from 'assets/Plus.svg';
 import { Button, PageWrapper, TaskAdd, TasksContainer, TasksHeader, TasksLoader } from 'components';
-import { useTasks, useUser } from 'hooks';
-import { useNotifications } from 'hooks/useNotifications';
+import { useNotifications, useTasks, useUser } from 'hooks';
 import { ButtonStyle } from 'models';
 
 const Home = () => {
-  const { tasks, isError, isLoading } = useTasks();
+  const { tasks, isLoading } = useTasks();
   const { isSuccess } = useUser();
   const { openNotification } = useNotifications();
   const [isPopup, setIsPopup] = useState(false);
 
   useEffect(() => {
-    if (isError) {
-      openNotification({ severity: 'error', message: 'Something went wrong!' });
-    }
-
     if (isSuccess) {
       openNotification({ severity: 'success', message: 'Log in successful!' });
     }
-  }, [isError, isSuccess, openNotification]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <PageWrapper>

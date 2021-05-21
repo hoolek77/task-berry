@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNotifications } from 'hooks/useNotifications';
 import { useUser } from 'hooks/useUser';
 import { CreateTaskType, TasksState } from 'models';
 import { RootState } from 'store';
@@ -13,8 +15,15 @@ import {
 
 const useTasks = () => {
   const dispatch = useDispatch();
+  const { openNotification } = useNotifications();
   const { accessToken } = useUser();
   const { tasks, isError, isLoading, isSuccess, labels } = useSelector<RootState, TasksState>((state) => state.tasks);
+
+  useEffect(() => {
+    if (isError) {
+      openNotification({ severity: 'error', message: 'Something went wrong!' });
+    }
+  }, [isError, isSuccess, openNotification]);
 
   const getTasks = async () => {
     await dispatch(getTasksThunk(accessToken));
