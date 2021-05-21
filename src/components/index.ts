@@ -10,3 +10,7 @@ export * from './TaskAdd';
 export * from './Menu';
 export * from './UnprotectedRoute';
 export * from './PageWrapper';
+export * from './TasksHeader';
+export * from './TasksContainer';
+export * from './LabelMenu';
+export * from './TasksLoader';

@@ -4,6 +4,7 @@ import { api } from 'utils';
 
 const initialState: TasksState = {
   tasks: [],
+  labels: [],
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -96,6 +97,14 @@ const taskModule = createSlice({
       state.isSuccess = false;
       state.isError = false;
     },
+    getLabels(state) {
+      const labels = state.tasks
+        .map((task) => (task.label ? task.label : ''))
+        .filter((label) => label !== '')
+        .filter((value, index, self) => self.indexOf(value) === index);
+
+      state.labels = labels;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getTasksThunk.fulfilled, (state, { payload }: { payload: Task[] }) => {
@@ -163,6 +172,6 @@ const taskModule = createSlice({
   },
 });
 
-export const { resetTasksToInitial, resetAsyncTasksState } = taskModule.actions;
+export const { resetTasksToInitial, resetAsyncTasksState, getLabels } = taskModule.actions;
 
 export { taskModule };

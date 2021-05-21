@@ -33,6 +33,8 @@ export const TaskContainer = styled.li`
   }
 
   @media (max-width: 800px) {
+    justify-content: center;
+    align-items: center;
     width: 100%;
   }
 `;

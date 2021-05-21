@@ -11,6 +11,7 @@ export type Task = {
   _id: string;
   userId: string;
   title: string;
+  label?: string;
   description: string;
   color: string;
   finished: boolean;
@@ -24,6 +25,7 @@ export type NotificationsState = {
 
 export type TasksState = {
   tasks: Task[];
+  labels: string[];
   isLoading: boolean;
   isSuccess: boolean;
   isError: boolean;
@@ -33,6 +35,7 @@ export type CreateTaskType = {
   title: string;
   description: string;
   color: string;
+  label?: string;
 };
 
 export type UpdateTaskType = {

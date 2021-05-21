@@ -1,12 +1,12 @@
 import { Alert } from '@material-ui/lab';
 import styled from 'styled-components';
 
-export const StyledAlert = styled(Alert)`
+export const StyledAlert = styled(Alert)<{ isDarkTheme: boolean }>`
   &.MuiAlert-standardSuccess {
-    background-color: #4bb543;
+    background-color: ${({ isDarkTheme }) => isDarkTheme && '#4bb543'};
   }
 
   &.MuiAlert-standardError {
-    background-color: #6f0000;
+    background-color: ${({ isDarkTheme }) => isDarkTheme && '#6f0000'};
   }
 `;

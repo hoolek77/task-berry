@@ -52,6 +52,7 @@ export const NavigationItem = styled(Link)<{ isActive: boolean }>`
   border-radius: 15px;
   cursor: pointer;
   transition-duration: 200ms;
+  text-decoration: none;
   svg {
     transition-duration: 150ms;
     margin: 0;

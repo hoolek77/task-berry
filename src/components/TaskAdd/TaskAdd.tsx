@@ -17,7 +17,7 @@ interface Props {
 const TaskAdd = ({ setIsPopup }: Props) => {
   const { addTask, isLoading } = useTasks();
   const [task, setTask] = useState<CreateTaskType>({ title: '', description: '', color: colors[0].color });
-  const { title, description, color } = task;
+  const { title, description, color, label } = task;
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const TaskAdd = ({ setIsPopup }: Props) => {
 
   return (
     <>
-      <Popup width="450px" height="450px">
+      <Popup width="450px" height="530px">
         <AddTaskHeader>Add a new task</AddTaskHeader>
         <form onSubmit={handleSubmit}>
           <Input
@@ -45,6 +45,13 @@ const TaskAdd = ({ setIsPopup }: Props) => {
             value={description}
             onChange={(e) => setTask((prev) => ({ ...prev, description: e.target.value }))}
             required
+          />
+          <Input
+            type="text"
+            name="label"
+            placeholder="Label"
+            value={label}
+            onChange={(e) => setTask((prev) => ({ ...prev, label: e.target.value }))}
           />
           <ColorsContainer>
             {colors.map((item) => (

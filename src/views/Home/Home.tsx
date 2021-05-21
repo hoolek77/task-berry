@@ -1,26 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as PlusSvg } from 'assets/Plus.svg';
-import { Button, Loader, PageWrapper, TaskAdd } from 'components';
-import { TasksList } from 'components/TasksList';
+import { Button, PageWrapper, TaskAdd, TasksContainer, TasksHeader, TasksLoader } from 'components';
 import { useTasks, useUser } from 'hooks';
 import { useNotifications } from 'hooks/useNotifications';
 import { ButtonStyle } from 'models';
 
-import { TasksContainer, TasksHeader, TasksLoader } from './styles';
-
 const Home = () => {
-  const { tasks, isError, isLoading, getTasks } = useTasks();
+  const { tasks, isError, isLoading } = useTasks();
   const { isSuccess } = useUser();
   const { openNotification } = useNotifications();
-  const { accessToken } = useUser();
   const [isPopup, setIsPopup] = useState(false);
-
-  useEffect(() => {
-    if (tasks.length === 0) {
-      getTasks();
-    }
-    /* eslint-disable-next-line react-hooks/exhaustive-deps */
-  }, [accessToken]);
 
   useEffect(() => {
     if (isError) {
@@ -34,22 +23,8 @@ const Home = () => {
 
   return (
     <PageWrapper>
-      <TasksHeader>
-        Total Tasks
-        <p>
-          {tasks.length} Tasks | <span>{tasks.filter((task) => task.finished).length} Finished</span>
-        </p>
-      </TasksHeader>
-      {!isLoading && (
-        <TasksContainer>
-          <TasksList tasks={tasks} />
-        </TasksContainer>
-      )}
-      {isLoading && (
-        <TasksLoader>
-          <Loader size={100} />
-        </TasksLoader>
-      )}
+      <TasksHeader tasks={tasks} />
+      {!isLoading ? <TasksContainer tasks={tasks} /> : <TasksLoader />}
       <Button buttonStyle={ButtonStyle.TASK_ADD} onClick={() => setIsPopup(true)}>
         <PlusSvg />
       </Button>
