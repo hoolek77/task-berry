@@ -12,6 +12,8 @@ interface Props {
 const Task = ({ task: { _id, title, finished, description, color } }: Props) => {
   const { finishTask, deleteTask } = useTasks();
 
+  // TODO: add ability to edit task
+
   return (
     <TaskContainer finished={finished}>
       <TaskHeader color={color}>
@@ -20,7 +22,7 @@ const Task = ({ task: { _id, title, finished, description, color } }: Props) => 
       <TaskDescripton>{description}</TaskDescripton>
       <TaskButtonsContainer>
         <Button buttonStyle={ButtonStyle.TASK_FINISH} color={color} onClick={() => finishTask(_id)}>
-          {finished ? 'Undo' : 'Finish'}
+          {finished ? 'Unfinish' : 'Finish'}
         </Button>
         <Button buttonStyle={ButtonStyle.TASK_DELETE} onClick={() => deleteTask(_id)}>
           Delete

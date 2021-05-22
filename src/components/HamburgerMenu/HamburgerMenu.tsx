@@ -1,5 +1,6 @@
 import React, { Dispatch, ReactNode, SetStateAction } from 'react';
 import { PopupOverlay } from 'components/PopupOverlay';
+import { useTheme } from 'hooks';
 
 import { HamburgerIcon, HamburgerMenuContainer } from './styles';
 
@@ -10,9 +11,11 @@ interface Props extends React.ComponentPropsWithoutRef<'button'> {
 }
 
 const HamburgerMenu = ({ children, isMenu, setIsMenu }: Props) => {
+  const { isDarkTheme } = useTheme();
+
   return (
     <>
-      <HamburgerIcon isMenu={isMenu} onClick={() => setIsMenu((prev) => !prev)}>
+      <HamburgerIcon isDarkTheme={isDarkTheme()} isMenu={isMenu} onClick={() => setIsMenu((prev) => !prev)}>
         <div />
         <div />
         <div />

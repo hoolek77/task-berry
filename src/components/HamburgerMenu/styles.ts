@@ -1,6 +1,18 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const HamburgerIcon = styled.div<{ isMenu: boolean }>`
+const LightThemeStyling = css<{ isMenu: boolean }>`
+  background-color: ${({ isMenu }) => (isMenu ? '#963757' : '#333')};
+`;
+
+const DarkThemeStyling = css<{ isMenu: boolean }>`
+  background-color: ${({ isMenu }) => (isMenu ? '#fff' : '#888')};
+`;
+
+const getHamburgerStyles = (isDarkTheme: boolean) => {
+  return isDarkTheme ? DarkThemeStyling : LightThemeStyling;
+};
+
+export const HamburgerIcon = styled.div<{ isMenu: boolean; isDarkTheme: boolean }>`
   width: 2rem;
   height: 2rem;
   position: fixed;
@@ -16,7 +28,7 @@ export const HamburgerIcon = styled.div<{ isMenu: boolean }>`
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ isMenu }) => (isMenu ? '#963757' : '#333')};
+    ${({ isDarkTheme }) => getHamburgerStyles(isDarkTheme)}
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
