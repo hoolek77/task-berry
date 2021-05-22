@@ -14,3 +14,4 @@ export * from './TasksHeader';
 export * from './TasksContainer';
 export * from './LabelMenu';
 export * from './TasksLoader';
+export * from './LanguagePicker';

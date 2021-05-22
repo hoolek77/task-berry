@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from 'components/Button';
 import { useTasks } from 'hooks';
 import { ButtonStyle, Task as TaskType } from 'models';
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const Task = ({ task: { _id, title, finished, description, color } }: Props) => {
+  const { t } = useTranslation();
   const { finishTask, deleteTask } = useTasks();
 
   // TODO: add ability to edit task
@@ -22,10 +24,10 @@ const Task = ({ task: { _id, title, finished, description, color } }: Props) => 
       <TaskDescripton>{description}</TaskDescripton>
       <TaskButtonsContainer>
         <Button buttonStyle={ButtonStyle.TASK_FINISH} color={color} onClick={() => finishTask(_id)}>
-          {finished ? 'Unfinish' : 'Finish'}
+          {finished ? t('task.unfinish') : t('task.finish')}
         </Button>
         <Button buttonStyle={ButtonStyle.TASK_DELETE} onClick={() => deleteTask(_id)}>
-          Delete
+          {t('task.delete')}
         </Button>
       </TaskButtonsContainer>
     </TaskContainer>

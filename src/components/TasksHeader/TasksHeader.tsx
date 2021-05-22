@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Task } from 'models';
 
 import { Header } from './styles';
@@ -9,11 +10,16 @@ interface Props {
 }
 
 const TasksHeader = ({ tasks, label }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <Header>
-      {label ? `Tasks with label: ${label}` : 'Total Tasks'}
+      {label ? t('tasksHeader.headerWithLabel', { label }) : t('tasksHeader.header')}
       <p>
-        {tasks.length} Tasks | <span>{tasks.filter((task) => task.finished).length} Finished</span>
+        {tasks.length} {t('tasksHeader.tasks')} |{' '}
+        <span>
+          {tasks.filter((task) => task.finished).length} {t('tasksHeader.finished')}
+        </span>
       </p>
     </Header>
   );

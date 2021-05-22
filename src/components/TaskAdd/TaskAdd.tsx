@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { Popup } from 'components/Popup';
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const TaskAdd = ({ setIsPopup }: Props) => {
+  const { t } = useTranslation();
   const { addTask, isLoading } = useTasks();
   const [task, setTask] = useState<CreateTaskType>({ title: '', description: '', color: colors[0].color });
   const { title, description, color, label } = task;
@@ -28,12 +30,12 @@ const TaskAdd = ({ setIsPopup }: Props) => {
   return (
     <>
       <Popup width="450px" height="530px">
-        <AddTaskHeader>Add a new task</AddTaskHeader>
+        <AddTaskHeader>{t('taskAdd.header')}</AddTaskHeader>
         <form onSubmit={handleSubmit}>
           <Input
             type="text"
             name="title"
-            placeholder="Title"
+            placeholder={t('taskAdd.title')}
             value={title}
             onChange={(e) => setTask((prev) => ({ ...prev, title: e.target.value }))}
             required
@@ -41,7 +43,7 @@ const TaskAdd = ({ setIsPopup }: Props) => {
           <Input
             type="text"
             name="description"
-            placeholder="Description"
+            placeholder={t('taskAdd.description')}
             value={description}
             onChange={(e) => setTask((prev) => ({ ...prev, description: e.target.value }))}
             required
@@ -49,7 +51,7 @@ const TaskAdd = ({ setIsPopup }: Props) => {
           <Input
             type="text"
             name="label"
-            placeholder="Label"
+            placeholder={t('taskAdd.label')}
             value={label}
             onChange={(e) => setTask((prev) => ({ ...prev, label: e.target.value }))}
           />
@@ -59,7 +61,7 @@ const TaskAdd = ({ setIsPopup }: Props) => {
             ))}
           </ColorsContainer>
           <Button type="submit" buttonStyle={ButtonStyle.SUBMIT_MAIN} disabled={isLoading}>
-            Add Task
+            {t('taskAdd.button')}
           </Button>
         </form>
       </Popup>

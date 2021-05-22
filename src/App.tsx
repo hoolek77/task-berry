@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Menu, Notification, ProtectedRoute, UnprotectedRoute } from 'components';
+import { LanguagePicker, Menu, Notification, ProtectedRoute, UnprotectedRoute } from 'components';
 import { useUser } from 'hooks';
 import { FilteredTasks, Home, Landing, UserSettings } from 'views';
 import { NotFound } from 'views/NotFound';
@@ -8,10 +8,11 @@ import { NotFound } from 'views/NotFound';
 const App: FC = () => {
   const { accessToken, name } = useUser();
 
-  // TODO add translations: https://react.i18next.com/
+  // TODO: organized better translations (for sure for errors)
 
   return (
     <>
+      <LanguagePicker />
       <BrowserRouter>
         {accessToken && <Menu name={name} />}
         <Switch>

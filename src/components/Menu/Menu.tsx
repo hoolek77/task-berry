@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { RouteComponentProps, useHistory, withRouter } from 'react-router-dom';
 import { ReactComponent as Home } from 'assets/Home.svg';
 import { ReactComponent as Logout } from 'assets/Logout.svg';
@@ -15,6 +16,7 @@ interface Props extends RouteComponentProps {
 }
 
 const MenuComponent = ({ name, location }: Props) => {
+  const { t } = useTranslation();
   const history = useHistory();
   const theme = useTheme() as ThemeContentType;
   const { signOut } = useUser();
@@ -57,7 +59,7 @@ const MenuComponent = ({ name, location }: Props) => {
         </NavigationPanel>
         <Logout onClick={logOut} style={{ position: 'absolute', bottom: '30px' }} />
       </HamburgerMenu>
-      <UserInfo>Hi there, {name}</UserInfo>
+      <UserInfo>{t('menu.userInfo', { name })}</UserInfo>
     </>
   );
 };

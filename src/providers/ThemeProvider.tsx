@@ -3,7 +3,7 @@ import { LS_THEME } from 'constants/theme';
 import { ThemeType } from 'models';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { theme } from 'styles/theme';
-import { isTheme } from 'utils/theme';
+import { isTheme } from 'utils';
 
 type ThemeContextType = {
   theme: string;

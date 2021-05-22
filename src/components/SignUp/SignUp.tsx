@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
@@ -20,6 +21,7 @@ export interface SignUpData {
 }
 
 const SignUp = ({ setIsSignUp }: SignUpProps) => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { openNotification } = useNotifications();
   const { signIn, isSuccess, isError } = useUser();
@@ -35,29 +37,28 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
     if (name.length < 2 || name.length > 60) {
       return openNotification({
         severity: 'error',
-        message: 'Name should be minimum 2 characters and maximum 60 characters.',
+        message: t('signUp.nameError'),
       });
     }
 
     if (email.length < 10 || email.length > 60) {
       return openNotification({
         severity: 'error',
-        message: 'Email should be minimum 10 characters and maximum 60 characters.',
+        message: t('signUp.emailLengthError'),
       });
     }
 
     if (!/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password)) {
       return openNotification({
         severity: 'error',
-        message:
-          'Password must be from 8 to 20 symbol length and matches at min: one symbol A-Z, one a-z and number or characters _, -',
+        message: t('signUp.passwordError'),
       });
     }
 
     if (password !== passwordRepeat) {
       return openNotification({
         severity: 'error',
-        message: 'Passwords are not the same!',
+        message: t('signUp.passwordsNotSameError'),
       });
     }
 
@@ -75,31 +76,31 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
       signIn({ email, password });
       setIsLoading(false);
     } catch (ex) {
-      openNotification({ severity: 'error', message: 'Something went wrong while creating your account.' });
+      openNotification({ severity: 'error', message: t('signUp.signUpError') });
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
     if (isSuccess) {
-      openNotification({ severity: 'success', message: 'Sign up successful!' });
+      openNotification({ severity: 'success', message: t('signUp.signUpSuccess') });
       history.push('/home');
     }
 
     if (isError) {
-      openNotification({ severity: 'error', message: 'Unable to login!' });
+      openNotification({ severity: 'error', message: t('signUp.logInError') });
     }
-  }, [isSuccess, isError, openNotification, history]);
+  }, [isSuccess, isError, openNotification, history, t]);
 
   return (
     <SignUpContainer>
-      <SignUpHeader>SIGN UP</SignUpHeader>
+      <SignUpHeader>{t('signUp.header')}</SignUpHeader>
       <form onSubmit={handleSubmit}>
         <Input
           type="text"
           name="email"
           value={email}
-          placeholder="Email"
+          placeholder={t('signUp.email')}
           onChange={(e) => setSignUpData((prev) => ({ ...prev, email: e.target.value }))}
           required
         />
@@ -107,7 +108,7 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           type="text"
           name="name"
           value={name}
-          placeholder="Name"
+          placeholder={t('signUp.name')}
           onChange={(e) => setSignUpData((prev) => ({ ...prev, name: e.target.value }))}
           required
         />
@@ -115,7 +116,7 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           type="password"
           name="password"
           value={password}
-          placeholder="Password"
+          placeholder={t('signUp.password')}
           onChange={(e) => setSignUpData((prev) => ({ ...prev, password: e.target.value }))}
           required
         />
@@ -123,14 +124,14 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           type="password"
           name="confirmPassword"
           value={passwordRepeat}
-          placeholder="Confirm Password"
+          placeholder={t('signUp.confirmPassword')}
           onChange={(e) => setSignUpData((prev) => ({ ...prev, passwordRepeat: e.target.value }))}
           style={{ marginBottom: '25px' }}
           required
         />
 
         <Button type="submit" buttonStyle={ButtonStyle.SUBMIT_MAIN} isLoading={isLoading} disabled={isLoading}>
-          Register
+          {t('signUp.buttonRegister')}
         </Button>
         <Button
           type="button"
@@ -138,7 +139,7 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           onClick={() => setIsSignUp((prev: boolean) => !prev)}
           disabled={isLoading}
         >
-          Sign In
+          {t('signUp.buttonSignIn')}
         </Button>
       </form>
     </SignUpContainer>

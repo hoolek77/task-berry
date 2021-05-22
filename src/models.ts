@@ -72,3 +72,5 @@ export enum ButtonStyle {
   TASK_FINISH = 'task-finish',
   TASK_DELETE = 'task-delete',
 }
+
+export type LanguageType = 'en' | 'pl';

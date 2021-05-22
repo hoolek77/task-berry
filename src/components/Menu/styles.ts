@@ -72,16 +72,9 @@ export const UserInfo = styled.div`
   align-items: center;
   justify-content: space-between;
   width: auto;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: 500;
   position: absolute;
   right: 40px;
-  top: 60px;
-  svg {
-    margin-left: 10px;
-  }
-  @media (max-width: 800px) {
-    top: 20px;
-    right: 10px;
-  }
+  top: 80px;
 `;
