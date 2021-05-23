@@ -30,12 +30,12 @@ const TaskAdd = ({ setIsPopup }: Props) => {
   return (
     <>
       <Popup width="450px" height="530px">
-        <AddTaskHeader>{t('taskAdd.header')}</AddTaskHeader>
+        <AddTaskHeader>{t('home.taskAdd.header')}</AddTaskHeader>
         <form onSubmit={handleSubmit}>
           <Input
             type="text"
             name="title"
-            placeholder={t('taskAdd.title')}
+            placeholder={t('home.taskAdd.title')}
             value={title}
             onChange={(e) => setTask((prev) => ({ ...prev, title: e.target.value }))}
             required
@@ -43,7 +43,7 @@ const TaskAdd = ({ setIsPopup }: Props) => {
           <Input
             type="text"
             name="description"
-            placeholder={t('taskAdd.description')}
+            placeholder={t('home.taskAdd.description')}
             value={description}
             onChange={(e) => setTask((prev) => ({ ...prev, description: e.target.value }))}
             required
@@ -51,7 +51,7 @@ const TaskAdd = ({ setIsPopup }: Props) => {
           <Input
             type="text"
             name="label"
-            placeholder={t('taskAdd.label')}
+            placeholder={t('home.taskAdd.label')}
             value={label}
             onChange={(e) => setTask((prev) => ({ ...prev, label: e.target.value }))}
           />
@@ -61,7 +61,7 @@ const TaskAdd = ({ setIsPopup }: Props) => {
             ))}
           </ColorsContainer>
           <Button type="submit" buttonStyle={ButtonStyle.SUBMIT_MAIN} disabled={isLoading}>
-            {t('taskAdd.button')}
+            {t('home.taskAdd.button')}
           </Button>
         </form>
       </Popup>

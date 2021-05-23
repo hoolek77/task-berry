@@ -23,7 +23,7 @@ const useTasks = () => {
 
   useEffect(() => {
     if (isError) {
-      openNotification({ severity: 'error', message: t('useTasks.error') });
+      openNotification({ severity: 'error', message: t('errors.somethingWentWrong') });
     }
   }, [isError, isSuccess, openNotification, t]);
 

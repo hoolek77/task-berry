@@ -16,7 +16,7 @@ export const LabelMenu = () => {
     <>
       <LabelMenuContainer>
         <LabelMenuItem to="/home" isActive={window.location.pathname === '/home'}>
-          {t('labelMenu.all')}
+          {t('home.labelMenu.all')}
         </LabelMenuItem>
         {labels.map((label) => (
           <LabelMenuItem to={`/tasks/${label}`} isActive={isActive(label)}>

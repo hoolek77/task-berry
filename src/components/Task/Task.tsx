@@ -24,10 +24,10 @@ const Task = ({ task: { _id, title, finished, description, color } }: Props) => 
       <TaskDescripton>{description}</TaskDescripton>
       <TaskButtonsContainer>
         <Button buttonStyle={ButtonStyle.TASK_FINISH} color={color} onClick={() => finishTask(_id)}>
-          {finished ? t('task.unfinish') : t('task.finish')}
+          {finished ? t('home.task.unfinish') : t('home.task.finish')}
         </Button>
         <Button buttonStyle={ButtonStyle.TASK_DELETE} onClick={() => deleteTask(_id)}>
-          {t('task.delete')}
+          {t('home.task.delete')}
         </Button>
       </TaskButtonsContainer>
     </TaskContainer>

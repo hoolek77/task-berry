@@ -14,11 +14,11 @@ const TasksHeader = ({ tasks, label }: Props) => {
 
   return (
     <Header>
-      {label ? t('tasksHeader.headerWithLabel', { label }) : t('tasksHeader.header')}
+      {label ? t('home.tasksHeader.headerWithLabel', { label }) : t('home.tasksHeader.header')}
       <p>
-        {tasks.length} {t('tasksHeader.tasks')} |{' '}
+        {tasks.length} {t('home.tasksHeader.tasks')} |{' '}
         <span>
-          {tasks.filter((task) => task.finished).length} {t('tasksHeader.finished')}
+          {tasks.filter((task) => task.finished).length} {t('home.tasksHeader.finished')}
         </span>
       </p>
     </Header>

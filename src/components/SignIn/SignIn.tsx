@@ -25,18 +25,18 @@ export const SignIn = ({ setIsSignUp }: SignInProps) => {
 
   useEffect(() => {
     if (isError) {
-      openNotification({ severity: 'error', message: t('signIn.error') });
+      openNotification({ severity: 'error', message: t('errors.login') });
     }
   }, [isError, isSuccess, openNotification, t]);
 
   return (
     <SignInContainer>
-      <SignInHeader>{t('signIn.header')}</SignInHeader>
+      <SignInHeader>{t('landing.signIn.header')}</SignInHeader>
       <form onSubmit={handleSubmit}>
         <Input
           type="text"
           name="email"
-          placeholder={t('signIn.email')}
+          placeholder={t('landing.signIn.email')}
           required
           value={user.email}
           onChange={(e) => setUser((prevState) => ({ ...prevState, email: e.target.value }))}
@@ -44,20 +44,20 @@ export const SignIn = ({ setIsSignUp }: SignInProps) => {
         <Input
           type="password"
           name="password"
-          placeholder={t('signIn.password')}
+          placeholder={t('landing.signIn.password')}
           required
           value={user.password}
           onChange={(e) => setUser((prevState) => ({ ...prevState, password: e.target.value }))}
         />
         <Button buttonStyle={ButtonStyle.SUBMIT_MAIN} type="submit" isLoading={isLoading} disabled={isLoading}>
-          {t('signIn.buttonSignIn')}
+          {t('landing.signIn.buttonSignIn')}
         </Button>
         <Button
           buttonStyle={ButtonStyle.SUBMIT_SECONDARY}
           onClick={() => setIsSignUp((prev) => !prev)}
           disabled={isLoading}
         >
-          {t('signIn.buttonSignUp')}
+          {t('landing.signIn.buttonSignUp')}
         </Button>
       </form>
     </SignInContainer>

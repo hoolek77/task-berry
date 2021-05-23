@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      openNotification({ severity: 'success', message: t('home.isSuccess') });
+      openNotification({ severity: 'success', message: t('successes.login') });
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

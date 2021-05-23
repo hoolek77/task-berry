@@ -59,7 +59,7 @@ const MenuComponent = ({ name, location }: Props) => {
         </NavigationPanel>
         <Logout onClick={logOut} style={{ position: 'absolute', bottom: '30px' }} />
       </HamburgerMenu>
-      <UserInfo>{t('menu.userInfo', { name })}</UserInfo>
+      <UserInfo>{t('home.menu.userInfo', { name })}</UserInfo>
     </>
   );
 };

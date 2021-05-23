@@ -8,7 +8,7 @@ import { NotFound } from 'views/NotFound';
 const App: FC = () => {
   const { accessToken, name } = useUser();
 
-  // TODO: organized better translations (for sure for errors)
+  // ? idea for page switching animations
 
   return (
     <>

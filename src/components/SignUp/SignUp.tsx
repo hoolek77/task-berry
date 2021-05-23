@@ -37,28 +37,28 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
     if (name.length < 2 || name.length > 60) {
       return openNotification({
         severity: 'error',
-        message: t('signUp.nameError'),
+        message: t('errors.nameError'),
       });
     }
 
     if (email.length < 10 || email.length > 60) {
       return openNotification({
         severity: 'error',
-        message: t('signUp.emailLengthError'),
+        message: t('errors.emailLengthError'),
       });
     }
 
     if (!/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(password)) {
       return openNotification({
         severity: 'error',
-        message: t('signUp.passwordError'),
+        message: t('errors.passwordError'),
       });
     }
 
     if (password !== passwordRepeat) {
       return openNotification({
         severity: 'error',
-        message: t('signUp.passwordsNotSameError'),
+        message: t('errors.passwordsNotSameError'),
       });
     }
 
@@ -76,31 +76,31 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
       signIn({ email, password });
       setIsLoading(false);
     } catch (ex) {
-      openNotification({ severity: 'error', message: t('signUp.signUpError') });
+      openNotification({ severity: 'error', message: t('errors.signUpError') });
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
     if (isSuccess) {
-      openNotification({ severity: 'success', message: t('signUp.signUpSuccess') });
+      openNotification({ severity: 'success', message: t('successes.signUp') });
       history.push('/home');
     }
 
     if (isError) {
-      openNotification({ severity: 'error', message: t('signUp.logInError') });
+      openNotification({ severity: 'error', message: t('errors.login') });
     }
   }, [isSuccess, isError, openNotification, history, t]);
 
   return (
     <SignUpContainer>
-      <SignUpHeader>{t('signUp.header')}</SignUpHeader>
+      <SignUpHeader>{t('landing.signUp.header')}</SignUpHeader>
       <form onSubmit={handleSubmit}>
         <Input
           type="text"
           name="email"
           value={email}
-          placeholder={t('signUp.email')}
+          placeholder={t('landing.signUp.email')}
           onChange={(e) => setSignUpData((prev) => ({ ...prev, email: e.target.value }))}
           required
         />
@@ -108,7 +108,7 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           type="text"
           name="name"
           value={name}
-          placeholder={t('signUp.name')}
+          placeholder={t('landing.signUp.name')}
           onChange={(e) => setSignUpData((prev) => ({ ...prev, name: e.target.value }))}
           required
         />
@@ -116,7 +116,7 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           type="password"
           name="password"
           value={password}
-          placeholder={t('signUp.password')}
+          placeholder={t('landing.signUp.password')}
           onChange={(e) => setSignUpData((prev) => ({ ...prev, password: e.target.value }))}
           required
         />
@@ -124,14 +124,14 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           type="password"
           name="confirmPassword"
           value={passwordRepeat}
-          placeholder={t('signUp.confirmPassword')}
+          placeholder={t('landing.signUp.confirmPassword')}
           onChange={(e) => setSignUpData((prev) => ({ ...prev, passwordRepeat: e.target.value }))}
           style={{ marginBottom: '25px' }}
           required
         />
 
         <Button type="submit" buttonStyle={ButtonStyle.SUBMIT_MAIN} isLoading={isLoading} disabled={isLoading}>
-          {t('signUp.buttonRegister')}
+          {t('landing.signUp.buttonRegister')}
         </Button>
         <Button
           type="button"
@@ -139,7 +139,7 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
           onClick={() => setIsSignUp((prev: boolean) => !prev)}
           disabled={isLoading}
         >
-          {t('signUp.buttonSignIn')}
+          {t('landing.signUp.buttonSignIn')}
         </Button>
       </form>
     </SignUpContainer>
