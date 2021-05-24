@@ -46,6 +46,10 @@ const Task = ({ task: { _id, title, finished, description, color, label } }: Pro
     setIsEditing(false);
   };
 
+  const handleCancel = () => {
+    setUpdateTaskData({ title, description, color, label });
+  };
+
   return (
     <>
       {isEditing ? (
@@ -74,7 +78,7 @@ const Task = ({ task: { _id, title, finished, description, color, label } }: Pro
               <Button type="submit" buttonStyle={ButtonStyle.TASK_FINISH} color={color}>
                 {t('home.task.save')}
               </Button>
-              <Button buttonStyle={ButtonStyle.TASK_DELETE} onClick={() => setIsEditing(false)}>
+              <Button buttonStyle={ButtonStyle.TASK_DELETE} onClick={handleCancel}>
                 {t('home.task.cancel')}
               </Button>
             </TaskButtonsContainer>
