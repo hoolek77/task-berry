@@ -1,12 +1,12 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { CreateTaskType } from 'models';
+import { CreateTaskType, UpdateTaskType } from 'models';
 
 import { ColorBox } from './styles';
 
 interface Props {
   selectedColor: string;
   color: string;
-  setTask: Dispatch<SetStateAction<CreateTaskType>>;
+  setTask: Dispatch<SetStateAction<CreateTaskType | UpdateTaskType>>;
 }
 
 const TaskColor = ({ selectedColor, color, setTask }: Props) => {

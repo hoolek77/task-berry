@@ -42,6 +42,7 @@ export type UpdateTaskType = {
   title?: string;
   description?: string;
   color?: string;
+  label?: string;
 };
 
 export type UserState = {

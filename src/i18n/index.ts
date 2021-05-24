@@ -6,6 +6,8 @@ import { isLanguage } from 'utils';
 import { en } from './en';
 import { pl } from './pl';
 
+// TODO add https://github.com/i18next/i18next-browser-languageDetector
+
 const LANGUAGE = localStorage.getItem(LS_LANGUAGE);
 
 i18n.use(initReactI18next).init({

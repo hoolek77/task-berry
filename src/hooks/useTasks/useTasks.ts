@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNotifications } from 'hooks/useNotifications';
 import { useUser } from 'hooks/useUser';
-import { CreateTaskType, TasksState } from 'models';
+import { CreateTaskType, TasksState, UpdateTaskType } from 'models';
 import { RootState } from 'store';
 import {
   addTaskThunk,
@@ -12,6 +12,7 @@ import {
   getTasksThunk,
   resetAsyncTasksState,
   updateFinishedTaskThunk,
+  updateTaskThunk,
 } from 'store/reducers/tasks';
 
 const useTasks = () => {
@@ -43,6 +44,12 @@ const useTasks = () => {
     dispatch(resetAsyncTasksState());
   };
 
+  const updateTask = async (id: string, task: UpdateTaskType) => {
+    await dispatch(updateTaskThunk({ task, id, accessToken }));
+    dispatch(resetAsyncTasksState());
+    dispatch(getLabels());
+  };
+
   const deleteTask = async (id: string) => {
     await dispatch(deleteTaskThunk({ id, accessToken }));
     dispatch(resetAsyncTasksState());
@@ -64,6 +71,7 @@ const useTasks = () => {
     finishTask,
     deleteTask,
     getTasksByLabel,
+    updateTask,
   };
 };
 

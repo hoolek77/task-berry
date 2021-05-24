@@ -3,13 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { Popup } from 'components/Popup';
+import { PopupHeader } from 'components/PopupHeader';
 import { PopupOverlay } from 'components/PopupOverlay';
 import { TaskColor } from 'components/TaskColor';
 import { colors } from 'constants/colors';
 import { useTasks } from 'hooks';
-import { ButtonStyle, CreateTaskType } from 'models';
+import { ButtonStyle, CreateTaskType, UpdateTaskType } from 'models';
 
-import { AddTaskHeader, ColorsContainer } from './styles';
+import { ColorsContainer } from './styles';
 
 interface Props {
   setIsPopup: Dispatch<SetStateAction<boolean>>;
@@ -18,19 +19,22 @@ interface Props {
 const TaskAdd = ({ setIsPopup }: Props) => {
   const { t } = useTranslation();
   const { addTask, isLoading } = useTasks();
-  const [task, setTask] = useState<CreateTaskType>({ title: '', description: '', color: colors[0].color });
-  const { title, description, color, label } = task;
+  const [task, setTask] = useState<CreateTaskType | UpdateTaskType>({
+    title: '',
+    description: '',
+    color: colors[0].color,
+  });
+  const { title, description, color, label } = task as CreateTaskType;
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    addTask(task);
+  const handleSubmit = () => {
+    addTask(task as CreateTaskType);
     setIsPopup(false);
   };
 
   return (
     <>
       <Popup width="450px" height="530px">
-        <AddTaskHeader>{t('home.taskAdd.header')}</AddTaskHeader>
+        <PopupHeader title={t('home.taskAdd.header')} />
         <form onSubmit={handleSubmit}>
           <Input
             type="text"

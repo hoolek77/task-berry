@@ -1,18 +1,21 @@
+import { ReactComponent as EditSvg } from 'assets/Edit.svg';
+import { ReactComponent as MoreSvg } from 'assets/More.svg';
 import styled, { keyframes } from 'styled-components';
 
 const show = keyframes`
-0% {
+  0% {
     transform: scale(0.4);
-}
-50% {
+  }
+  50% {
     transform: scale(1.1);
-}
-100% {
+  }
+  100% {
     transform: scale(1);
-}
+  }
 `;
 
 export const TaskContainer = styled.li`
+  position: relative;
   animation: ${show} 0.3s;
   display: flex;
   flex-direction: column;
@@ -28,6 +31,7 @@ export const TaskContainer = styled.li`
   margin-bottom: 65px;
   margin-right: 70px;
   opacity: ${({ finished }: { finished: boolean }) => (finished ? '0.7' : '1')};
+
   span {
     margin-left: 20px;
   }
@@ -37,6 +41,24 @@ export const TaskContainer = styled.li`
     align-items: center;
     width: 100%;
   }
+`;
+
+export const Edit = styled(EditSvg)`
+  cursor: pointer;
+  position: absolute;
+  top: calc(50% - 16px);
+  right: 15px;
+  z-index: 2;
+  transition: all 150ms;
+`;
+
+export const More = styled(MoreSvg)`
+  cursor: pointer;
+  position: absolute;
+  top: calc(50% - 8px);
+  right: 15px;
+  z-index: 2;
+  transition: all 150ms;
 `;
 
 export const TaskHeader = styled.div`
@@ -52,6 +74,15 @@ export const TaskHeader = styled.div`
   letter-spacing: 0.04em;
   text-align: left;
   margin-bottom: 10px;
+
+  svg {
+  }
+
+  &:active {
+    svg {
+      transform: scale(1.2);
+    }
+  }
 `;
 
 export const TaskHeading = styled.h1`
@@ -89,4 +120,30 @@ export const TaskButtonsContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const TaskEditTitleInput = styled.input`
+  width: 240px;
+  height: 25px;
+  border: none;
+  text-align: center;
+  border-bottom: 1px solid ${({ theme }) => theme.fontPrimary};
+  background-color: ${({ color }) => color};
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.customBlack};
+  outline: none;
+`;
+
+export const TaskEditDescriptionInput = styled.input`
+  width: 240px;
+  height: 25px;
+  border: none;
+  text-align: center;
+  border-bottom: 1px solid ${({ theme }) => theme.fontPrimary};
+  background-color: inherit;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.customBlack};
+  outline: none;
 `;

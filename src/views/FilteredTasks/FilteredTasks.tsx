@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import { PageWrapper, TasksContainer, TasksHeader, TasksLoader } from 'components';
 import { useTasks } from 'hooks';
 
@@ -9,16 +9,22 @@ const FilteredTasks = () => {
   const tasks = getTasksByLabel(label);
 
   return (
-    <PageWrapper>
-      <TasksHeader tasks={tasks} label={label} />
-      {isLoading ? (
-        <TasksLoader />
+    <>
+      {tasks.length > 0 ? (
+        <PageWrapper>
+          <TasksHeader tasks={tasks} label={label} />
+          {isLoading ? (
+            <TasksLoader />
+          ) : (
+            <>
+              <TasksContainer tasks={tasks} />
+            </>
+          )}
+        </PageWrapper>
       ) : (
-        <>
-          <TasksContainer tasks={tasks} />
-        </>
+        <Redirect to="/home" />
       )}
-    </PageWrapper>
+    </>
   );
 };
 

@@ -1,5 +1,3 @@
-// TODO do same structure in pl translation and adjust it in components
-
 const en = {
   landing: {
     headerMain: 'Keep your plans organized!',
@@ -44,6 +42,13 @@ const en = {
       finish: 'Finish',
       unfinish: 'Unfinish',
       delete: 'Delete',
+      save: 'Save',
+      cancel: 'Cancel',
+      close: 'Close',
+    },
+
+    taskEdit: {
+      header: 'Edit Task',
     },
 
     menu: {

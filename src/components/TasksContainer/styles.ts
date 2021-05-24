@@ -5,8 +5,7 @@ export const Container = styled.ul`
   flex-wrap: wrap;
   width: 100%;
   max-height: calc(100vh - 240px);
-  position: relative;
-  top: 100px;
+  margin-top: 100px;
   padding: 10px 0 10px 10px;
   overflow-x: none;
   overflow-y: auto;

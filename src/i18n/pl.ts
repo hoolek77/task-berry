@@ -42,6 +42,13 @@ const pl = {
       finish: 'Zakończ',
       unfinish: 'Cofnij',
       delete: 'Usuń',
+      save: 'Zapisz',
+      cancel: 'Anuluj',
+      close: 'Zamknij',
+    },
+
+    taskEdit: {
+      header: 'Edytuj Zadanie',
     },
 
     menu: {
