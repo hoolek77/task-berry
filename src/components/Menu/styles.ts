@@ -11,7 +11,7 @@ export const MenuContainer = styled.div`
   word-wrap: normal;
   padding-top: 30px;
   padding-bottom: 40px;
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${({ theme }) => theme.primary};
   position: absolute;
   left: 0;
   top: 0;
@@ -48,7 +48,7 @@ export const NavigationItem = styled(Link)<{ isActive: boolean }>`
   justify-content: center;
   width: 50px;
   height: 50px;
-  background-color: ${(props) => (props.isActive ? props.theme.backgroundPrimary : '')};
+  background-color: ${({ isActive, theme }) => (isActive ? theme.backgroundPrimary : '')};
   border-radius: 15px;
   cursor: pointer;
   transition-duration: 200ms;
@@ -58,7 +58,7 @@ export const NavigationItem = styled(Link)<{ isActive: boolean }>`
     margin: 0;
   }
   &:hover {
-    ${(props) => (props.isActive ? '' : 'background-color: rgba(241, 241, 241, 0.6)')};
+    ${({ isActive }) => (isActive ? '' : 'background-color: rgba(241, 241, 241, 0.6)')};
   }
   &:active {
     svg {

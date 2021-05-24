@@ -1,12 +1,12 @@
 import styled, { keyframes } from 'styled-components';
 
 const show = keyframes`
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 `;
 
 export const SignInContainer = styled.div`
@@ -16,7 +16,7 @@ export const SignInContainer = styled.div`
   width: 450px;
   height: 480px;
   margin-top: 15px;
-  background-color: ${(props) => props.theme.backgroundPrimary};
+  background-color: ${({ theme }) => theme.backgroundPrimary};
   border-radius: 8px;
   box-shadow: 1px 3px 15px 1px rgba(4, 4, 4, 0.35);
   animation: ${show} 300ms ease;
@@ -54,7 +54,7 @@ export const SignInHeader = styled.div`
   font-size: 1.6rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${({ theme }) => theme.primary};
   border-radius: 8px 8px 0 0;
   margin-bottom: 80px;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);

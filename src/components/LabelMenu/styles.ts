@@ -21,7 +21,7 @@ export const LabelMenuContainer = styled.div`
     box-shadow: inset 0 0 5px #d3d3d3;
   }
   &::-webkit-scrollbar-thumb {
-    background: ${(props) => props.theme.primary};
+    background: ${({ theme }) => theme.primary};
   }
 
   @media (max-width: 1350px) {
@@ -43,12 +43,12 @@ export const LabelMenuItem = styled(Link)<{ isActive: boolean }>`
   padding: 0 15px 0 15px;
   margin-left: 10px;
   height: 50px;
-  background-color: ${(props) => (props.isActive ? props.theme.primary : '')};
+  background-color: ${({ isActive, theme }) => (isActive ? theme.primary : '')};
   border-radius: 15px;
   cursor: pointer;
   transition-duration: 200ms;
   text-decoration: none;
   &:hover {
-    ${(props) => (props.isActive ? '' : 'background-color: rgba(141, 141, 141, 0.6)')};
+    ${({ isActive }) => (isActive ? '' : 'background-color: rgba(141, 141, 141, 0.6)')};
   }
 `;

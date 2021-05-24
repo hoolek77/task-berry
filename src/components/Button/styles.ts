@@ -10,7 +10,7 @@ const submitMain = css`
   width: 180px;
   height: 35px;
   font-size: 1.15rem;
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${({ theme }) => theme.primary};
   border: none;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -24,12 +24,12 @@ const submitSecondary = css`
   width: 180px;
   height: 35px;
   font-size: 1rem;
-  background-color: ${(props) => props.theme.backgroundPrimary};
-  border: 2px solid ${(props) => props.theme.primary};
+  background-color: ${({ theme }) => theme.backgroundPrimary};
+  border: 2px solid ${({ theme }) => theme.primary};
   border-radius: 10px;
   &:hover {
     transform: scale(1.05);
-    background-color: ${(props) => props.theme.primary};
+    background-color: ${({ theme }) => theme.primary};
     color: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
@@ -46,7 +46,7 @@ const taskAdd = css`
   bottom: 40px;
   font-size: 3.1rem;
   font-weight: 500;
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${({ theme }) => theme.primary};
   margin: 0;
   border: none;
   border-radius: 10px;
@@ -70,7 +70,7 @@ const taskFinish = css<{ color?: string }>`
   height: 35px;
   font-size: 1rem;
   font-weight: 500;
-  background-color: ${(props) => props.color};
+  background-color: ${({ color }) => color};
   border-radius: 8px;
   border: none;
   transition-duration: 120ms;
@@ -84,7 +84,7 @@ const taskDelete = css`
   height: 35px;
   font-size: 1rem;
   font-weight: 500;
-  background-color: #d3d3d3;
+  background-color: ${({ theme }) => theme.deleteBackground};
   border-radius: 8px;
   border: none;
 `;

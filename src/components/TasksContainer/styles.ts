@@ -18,7 +18,7 @@ export const Container = styled.ul`
     box-shadow: inset 0 0 5px #d3d3d3;
   }
   &::-webkit-scrollbar-thumb {
-    background: ${(props) => props.theme.primary};
+    background: ${({ theme }) => theme.primary};
   }
   @media (max-width: 800px) {
     max-height: calc(100vh - 320px);

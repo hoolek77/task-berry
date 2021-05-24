@@ -12,7 +12,7 @@ export const Header = styled.div`
     font-size: 1.1rem;
   }
   span {
-    color: ${(props) => props.theme.primary};
+    color: ${({ theme }) => theme.primary};
   }
   svg {
     position: absolute;

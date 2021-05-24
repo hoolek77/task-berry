@@ -22,12 +22,12 @@ export const TaskContainer = styled.li`
   height: 200px;
   font-size: 1.2rem;
   overflow: hidden;
-  background-color: ${(props) => props.theme.backgroundSecondary};
+  background-color: ${({ theme }) => theme.backgroundSecondary};
   box-shadow: 0px 3px 10px rgba(4, 4, 4, 0.3);
   border-radius: 12px;
   margin-bottom: 65px;
   margin-right: 70px;
-  opacity: ${(props: { finished: boolean }) => (props.finished ? '0.7' : '1')};
+  opacity: ${({ finished }: { finished: boolean }) => (finished ? '0.7' : '1')};
   span {
     margin-left: 20px;
   }
@@ -45,7 +45,7 @@ export const TaskHeader = styled.div`
   justify-content: center;
   height: 50%;
   width: 100%;
-  background-color: ${(props: { color: string }) => props.color};
+  background-color: ${({ color }: { color: string }) => color};
   position: relative;
   font-size: 2rem;
   font-weight: 500;
@@ -78,7 +78,7 @@ export const TaskDescripton = styled.p`
     box-shadow: inset 0 0 5px #d3d3d3;
   }
   &::-webkit-scrollbar-thumb {
-    background: ${(props) => props.theme.primary};
+    background: ${({ theme }) => theme.primary};
   }
 `;
 

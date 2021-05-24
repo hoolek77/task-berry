@@ -17,7 +17,7 @@ export const NotFoundPageContainer = styled.div`
 export const AppName = styled.p`
   font-family: 'Righteous', cursive;
   font-size: 1.3rem;
-  color: ${(props) => props.theme.mainColor};
+  color: ${({ theme }) => theme.mainColor};
   margin: 0;
 `;
 
@@ -27,7 +27,7 @@ export const Number404 = styled.p`
   letter-spacing: 0.05em;
   margin-top: 20px;
   margin-bottom: 60px;
-  color: ${(props) => props.theme.mainColor};
+  color: ${({ theme }) => theme.mainColor};
 `;
 
 export const Message = styled.p`

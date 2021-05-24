@@ -53,7 +53,7 @@ export const HamburgerMenuContainer = styled.div<{ isMenu: boolean }>`
   transform: ${({ isMenu }) => (isMenu ? 'translateX(0)' : 'translateX(-100%)')};
   width: 90px;
   height: 100vh;
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${({ theme }) => theme.primary};
   position: fixed;
   left: 0;
   top: 0;

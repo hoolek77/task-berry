@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FormInput = styled.input`
-  color: ${(props) => props.theme.fontPrimary};
+  color: ${({ theme }) => theme.fontPrimary};
   width: 300px;
   font-size: 1.15rem;
   font-weight: 500;
@@ -21,6 +21,6 @@ export const FormInput = styled.input`
     }
   }
   &:focus {
-    border-bottom: 1px solid ${(props) => props.theme.fontPrimary};
+    border-bottom: 1px solid ${({ theme }) => theme.fontPrimary};
   }
 `;
