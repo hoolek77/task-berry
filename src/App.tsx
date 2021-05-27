@@ -8,6 +8,8 @@ import { NotFound } from 'views/NotFound';
 const App: FC = () => {
   const { accessToken, name } = useUser();
 
+  // * prepared user: emilly.jones@google.com passwd: Hello321!
+
   // ? idea for page switching animations
 
   return (
