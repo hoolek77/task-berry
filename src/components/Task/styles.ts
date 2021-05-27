@@ -75,19 +75,27 @@ export const TaskHeader = styled.div`
   text-align: left;
   margin-bottom: 10px;
 
-  svg {
-  }
-
-  &:active {
-    svg {
-      transform: scale(1.2);
-    }
+  svg:active {
+    transform: scale(1.2);
   }
 `;
 
 export const TaskHeading = styled.h1`
   text-align: center;
   font-size: 1.6rem;
+  max-width: 70%;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    height: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #c7c7c7;
+    box-shadow: inset 0 0 5px #d3d3d3;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.primary};
+  }
 `;
 
 export const TaskDescripton = styled.p`
