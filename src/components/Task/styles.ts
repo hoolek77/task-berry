@@ -83,8 +83,9 @@ export const TaskHeader = styled.div`
 export const TaskHeading = styled.h1`
   text-align: center;
   font-size: 1.6rem;
-  max-width: 70%;
+  max-width: 80%;
   overflow-x: auto;
+  white-space: nowrap;
 
   &::-webkit-scrollbar {
     height: 3px;
