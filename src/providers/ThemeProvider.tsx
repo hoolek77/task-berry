@@ -11,13 +11,13 @@ type ThemeContextType = {
 };
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: 'dark',
+  theme: 'light',
   setThemeState: () => {},
 });
 
 const ThemeProvider: FC = ({ children }) => {
   const THEME = localStorage.getItem(LS_THEME);
-  const [themeState, setThemeState] = useState<ThemeType>(isTheme(THEME) ? THEME : 'dark');
+  const [themeState, setThemeState] = useState<ThemeType>(isTheme(THEME) ? THEME : 'light');
 
   return (
     <ThemeContext.Provider value={{ theme: themeState, setThemeState }}>
