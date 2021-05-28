@@ -1,9 +1,10 @@
 import { ReactNode, useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { Menu } from 'components/Menu';
 import { useTasks, useUser } from 'hooks';
 
 const ProtectedRoute = ({ children, ...rest }: { children: ReactNode; path: string; exact: boolean }) => {
-  const { accessToken } = useUser();
+  const { accessToken, name } = useUser();
   const { getTasks, tasks } = useTasks();
 
   useEffect(() => {
@@ -17,7 +18,14 @@ const ProtectedRoute = ({ children, ...rest }: { children: ReactNode; path: stri
     <Route
       {...rest}
       render={() => {
-        return accessToken ? children : <Redirect to="/" />;
+        return accessToken ? (
+          <>
+            <Menu name={name} />
+            {children}
+          </>
+        ) : (
+          <Redirect to="/" />
+        );
       }}
     />
   );

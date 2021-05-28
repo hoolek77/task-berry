@@ -1,13 +1,10 @@
 import { FC } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { LanguagePicker, Menu, Notification, ProtectedRoute, UnprotectedRoute } from 'components';
-import { useUser } from 'hooks';
+import { LanguagePicker, Notification, ProtectedRoute, UnprotectedRoute } from 'components';
 import { FilteredTasks, Home, Landing, UserSettings } from 'views';
 import { NotFound } from 'views/NotFound';
 
 const App: FC = () => {
-  const { accessToken, name } = useUser();
-
   // * prepared user: emilly.jones@google.com passwd: Hello321!
 
   // ? idea for page switching animations
@@ -16,7 +13,6 @@ const App: FC = () => {
     <>
       <LanguagePicker />
       <BrowserRouter>
-        {accessToken && <Menu name={name} />}
         <Switch>
           <UnprotectedRoute path="/" exact>
             <Landing />
