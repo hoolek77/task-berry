@@ -1,44 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Task Berry
 
-## Available Scripts
+App is a task managment service.
+Live version is available at **[Task Berry](https://task-berry.netlify.app/)**
 
-In the project directory, you can run:
+```
+prepared user:
+  - email: emilly.jones@google.com
+  - password: Hello321!
+```
 
-### `yarn start`
+Be aware that first login might take a while, beacuse backend is hosted on free hosting provider.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Landing Page](https://lh3.googleusercontent.com/5hggS8hPzsqkjdNkhlLYSg1TrNWHvVr8MGBzyfSHXrDqxR5YJWo58mt6roEguWFcf15mLoa77OpfRb0jXr0OfdRGtTJGyE9zXZ4KkXgoMHYF4N8N9_LECA33bsq3pdmquVEujTNneqQH1FnDZrvUY8EmxpEuUNcMNydSv-tmAW-WeL-nzEUbQEQDyvK9uNpgO13zMQS9lGZ3DTxIjPTKFj8qZwvsulMpKd5c2YNFEpMR3tbi79ynVovz17JwJakmkoQIH0zKkTgJ59gSNTmlNc0Kl2pW-MRkiIlyo0ltUZ0-q-eKDBfHKGM6aApc125UpWunX4VVYEGWuPHDB9_-Q27zs7_JeneITDgFJ3qNORqVxMLHJWQdqop8M7L6C7i8jJrfEnqAnrfgIR1huf7g5F_EOFfjZU6n-dgPpjaCXZrs9-b6TdguNkyVEOtP0Zb5jehWhukShevT3UD6dE55q0rE0rb_QU46jS3zI1sxdicfGN-j3Z4zWYve7tJnD_7J4RXZvIKbczLAWtgX8lczpSMRaJpglyfIS4EkaXDOOHGeKXRG-hkw-QSj1iFg5hU65tOKbeAFLIf5lmIcP37VKOpZ9zb4AaL8IUiV3da5abbGUzqm_qll5ezpZwb62Nb2SYb_FTHCbP8naf-V8x8HJH3m9B6hPE2tiSV4pBZYM0-2fTxqMJEcQa9BExXxZGLlA7wNuzhbf4hkw3LevVzS2FI=w1767-h981-no?authuser=0)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![Home Page](https://lh3.googleusercontent.com/EKXye-HTGuQ3i8zpEoU8FDCoF0phAdYCuob2Nk4IzcDSfwr3WrQgLLrkHeQOlVMQ3yD-7ax-kTTMbAiv-NITskFC2J1_ebqMRhwtz7BRdP8bggDJZadTMM7Yv5k17yASkH0wNt24Nh379RkcTvU8YW2iS3FXiNTQw07ZUTUz4_UIUtVXnAJFgIJVzL_5YjARAY2caEkPzJZ6DRoAHHFcTgj3cO8bEQDcuKrnaBAku--OiSFyku_ppq9xJS8s_TtzJYsTemkOub33nSHg416fHNrEiKq6iKugPgOPdQDP3Nh_XU0Gyt0-55Jvuxbgb12_fLASEnpZvaoZXhCclk4mwQjgHeJvsqr7-CIdhajTWQEheLJFV7BajTkRM7PBicc8RXJcfxD3H5wrcfvsw9HfOWhcEw8xxxWFuhxI64hxsjYvHiRKe0GU51Y7xDpqX4lVhw97jC8NH0wPNJLQ0Uk_7vdjB9aWD_N3_SDhpXlqSkbQKKroorZu3BDd5zkgUlZpR1eLSrf9oRMznPciRQxVCaYYZnXd3U69D6qjyx6O8HXHIeZE1j5H78VKWSm_6bTSlwvKm7VpYE7F8JpVG_vWWinv0Fl1e6-O7v9k0mdBmoVf0ifn-x3vDWWh5ZZqdQfiTe0Z3mO6VhAOeZuwUb-dzbim5olJp2V3v8oyHdZQOraVn5ubFp0PfUKt4y1bJfC5fLAnyTYBBg_fUR1PKKiMCBY=w1743-h982-no?authuser=0)
 
-### `yarn test`
+## Usage
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+yarn install # installs dependecies
+yarn start # compiles and hot-reloads for development
+yarn build # compiles and minifies for production
+yarn lint # lints files
+yarn lint:fix # lints and fixes files
+```
 
-### `yarn build`
+## Tech Stack
+- React + TypeScript
+- Redux Toolkit
+- StyledComponents
+- Gsap
+- i18n
+- Axios
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Authors
+- [Me](https://github.com/hoolek77)
