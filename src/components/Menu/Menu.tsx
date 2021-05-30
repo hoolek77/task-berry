@@ -23,7 +23,8 @@ const MenuComponent = ({ name, location }: Props) => {
   const [isMenu, setIsMenu] = useState(false);
 
   const checkRoute = (pathname: string) => {
-    const isActive = location.pathname === pathname;
+    const pathnameSplitted = location.pathname.split('/');
+    const isActive = pathname === pathnameSplitted[1];
     return isActive;
   };
 
@@ -38,10 +39,10 @@ const MenuComponent = ({ name, location }: Props) => {
         <span>TASK</span>
         <span>BERRY</span>
         <NavigationPanel>
-          <NavigationItem to="/home" isActive={checkRoute('/home')}>
+          <NavigationItem to="/home" $isActive={checkRoute('home')}>
             <Home fill={theme.fontPrimary} />
           </NavigationItem>
-          <NavigationItem to="/settings" isActive={checkRoute('/settings')}>
+          <NavigationItem to="/settings" $isActive={checkRoute('settings')}>
             <Settings fill={theme.fontPrimary} />
           </NavigationItem>
         </NavigationPanel>
@@ -50,10 +51,10 @@ const MenuComponent = ({ name, location }: Props) => {
 
       <HamburgerMenu isMenu={isMenu} setIsMenu={setIsMenu}>
         <NavigationPanel>
-          <NavigationItem to="/home" isActive={checkRoute('/home')} onClick={() => setIsMenu(false)}>
+          <NavigationItem to="/home" $isActive={checkRoute('home')} onClick={() => setIsMenu(false)}>
             <Home fill={theme.fontPrimary} />
           </NavigationItem>
-          <NavigationItem to="/settings" isActive={checkRoute('/settings')} onClick={() => setIsMenu(false)}>
+          <NavigationItem to="/settings" $isActive={checkRoute('settings')} onClick={() => setIsMenu(false)}>
             <Settings fill={theme.fontPrimary} />
           </NavigationItem>
         </NavigationPanel>

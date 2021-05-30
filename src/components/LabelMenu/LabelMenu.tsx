@@ -9,17 +9,17 @@ export const LabelMenu = () => {
   const { labels } = useTasks();
 
   const isActive = (label: string) => {
-    return window.location.pathname === `/tasks/${label}`;
+    return window.location.pathname === `/home/${label}`;
   };
 
   return (
     <>
       <LabelMenuContainer>
-        <LabelMenuItem to="/home" isActive={window.location.pathname === '/home'}>
+        <LabelMenuItem to="/home" $isActive={window.location.pathname === '/home'}>
           {t('home.labelMenu.all')}
         </LabelMenuItem>
         {labels.map((label) => (
-          <LabelMenuItem to={`/tasks/${label}`} isActive={isActive(label)}>
+          <LabelMenuItem to={`/home/${label}`} $isActive={isActive(label)} key={label}>
             {label}
           </LabelMenuItem>
         ))}

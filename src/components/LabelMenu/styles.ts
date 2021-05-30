@@ -35,7 +35,7 @@ export const LabelMenuContainer = styled.div`
   }
 `;
 
-export const LabelMenuItem = styled(Link)<{ isActive: boolean }>`
+export const LabelMenuItem = styled(Link)<{ $isActive: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,12 +43,12 @@ export const LabelMenuItem = styled(Link)<{ isActive: boolean }>`
   padding: 0 15px 0 15px;
   margin-left: 10px;
   height: 50px;
-  background-color: ${({ isActive, theme }) => (isActive ? theme.primary : '')};
+  background-color: ${({ $isActive, theme }) => ($isActive ? theme.primary : '')};
   border-radius: 15px;
   cursor: pointer;
   transition-duration: 200ms;
   text-decoration: none;
   &:hover {
-    ${({ isActive }) => (isActive ? '' : 'background-color: rgba(141, 141, 141, 0.6)')};
+    ${({ $isActive }) => ($isActive ? '' : 'background-color: rgba(141, 141, 141, 0.6)')};
   }
 `;

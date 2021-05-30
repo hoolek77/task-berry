@@ -1,37 +1,38 @@
 import { FC } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { LanguagePicker, Notification, ProtectedRoute, UnprotectedRoute } from 'components';
+import { Route, Switch, useLocation } from 'react-router-dom';
+import { LanguagePicker, MotionAnimation, Notification, ProtectedRoute, UnprotectedRoute } from 'components';
+import { AnimatePresence } from 'framer-motion';
 import { FilteredTasks, Home, Landing, UserSettings } from 'views';
 import { NotFound } from 'views/NotFound';
 
 const App: FC = () => {
-  // * prepared user: emilly.jones@google.com passwd: Hello321!
-
-  // ? idea for page switching animations
+  const location = useLocation();
 
   return (
     <>
       <LanguagePicker />
-      <BrowserRouter>
-        <Switch>
+      <AnimatePresence initial={false} exitBeforeEnter>
+        <Switch location={location} key={location.pathname}>
           <UnprotectedRoute path="/" exact>
             <Landing />
           </UnprotectedRoute>
           <ProtectedRoute path="/home" exact>
             <Home />
           </ProtectedRoute>
-          <ProtectedRoute path="/tasks/:label" exact>
+          <ProtectedRoute path="/home/:label" exact>
             <FilteredTasks />
           </ProtectedRoute>
           <ProtectedRoute path="/settings" exact>
             <UserSettings />
           </ProtectedRoute>
           <Route exact>
-            <NotFound />
+            <MotionAnimation>
+              <NotFound />
+            </MotionAnimation>
           </Route>
         </Switch>
-        <Notification />
-      </BrowserRouter>
+      </AnimatePresence>
+      <Notification />
     </>
   );
 };

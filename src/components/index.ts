@@ -15,3 +15,4 @@ export * from './TasksContainer';
 export * from './LabelMenu';
 export * from './TasksLoader';
 export * from './LanguagePicker';
+export * from './MotionAnimation';

@@ -1,5 +1,6 @@
 import React from 'react';
 import { LabelMenu } from 'components/LabelMenu';
+import { MotionAnimation } from 'components/MotionAnimation';
 import { TasksList } from 'components/TasksList';
 import { useTasks } from 'hooks';
 import { Task } from 'models';
@@ -16,9 +17,11 @@ const TasksContainer = ({ tasks }: Props) => {
   return (
     <>
       {labels.length > 0 && <LabelMenu />}
-      <Container>
-        <TasksList tasks={tasks} />
-      </Container>
+      <MotionAnimation>
+        <Container>
+          <TasksList tasks={tasks} />
+        </Container>
+      </MotionAnimation>
     </>
   );
 };

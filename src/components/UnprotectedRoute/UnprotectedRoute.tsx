@@ -1,8 +1,12 @@
 import { ReactNode } from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, RouteProps } from 'react-router-dom';
 import { useUser } from 'hooks';
 
-const UnprotectedRoute = ({ children, ...rest }: { children: ReactNode; path: string; exact: boolean }) => {
+interface Props extends RouteProps {
+  children: ReactNode;
+}
+
+const UnprotectedRoute = ({ children, ...rest }: Props) => {
   const { accessToken } = useUser();
   return (
     <Route
