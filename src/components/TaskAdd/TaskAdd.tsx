@@ -14,15 +14,17 @@ import { ColorsContainer } from './styles';
 
 interface Props {
   setIsPopup: Dispatch<SetStateAction<boolean>>;
+  activeLabel?: string;
 }
 
-const TaskAdd = ({ setIsPopup }: Props) => {
+const TaskAdd = ({ setIsPopup, activeLabel }: Props) => {
   const { t } = useTranslation();
   const { addTask, isLoading } = useTasks();
   const [task, setTask] = useState<CreateTaskType | UpdateTaskType>({
     title: '',
     description: '',
     color: colors[0].color,
+    label: activeLabel || '',
   });
   const { title, description, color, label } = task as CreateTaskType;
 
