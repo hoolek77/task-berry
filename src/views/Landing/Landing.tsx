@@ -28,22 +28,24 @@ const Landing = () => {
     tl.fromTo(taskOne, {}, { duration: 0.4, autoAlpha: 1, delay: 2.2 })
       .fromTo(taskTwo, {}, { duration: 0.4, autoAlpha: 1 })
       .fromTo(taskThree, {}, { duration: 0.4, autoAlpha: 1 });
+
+    return () => {
+      gsap.globalTimeline.pause();
+    };
   }, []);
 
   return (
-    <>
-      <LandingPageContainer>
-        <Splash ref={wrapper}>
-          <p>{t('landing.headerMain')}</p>
-          <span>{t('landing.headerSecondary')}</span>
-          {isDarkTheme() ? <LandingDarkSvg /> : <LandingLightSvg />}
-        </Splash>
-        <Sign>
-          <span>TASK BERRY</span>
-          {isSignUp ? <SignUp setIsSignUp={setIsSignUp} /> : <SignIn setIsSignUp={setIsSignUp} />}
-        </Sign>
-      </LandingPageContainer>
-    </>
+    <LandingPageContainer>
+      <Splash ref={wrapper}>
+        <p>{t('landing.headerMain')}</p>
+        <span>{t('landing.headerSecondary')}</span>
+        {isDarkTheme() ? <LandingDarkSvg /> : <LandingLightSvg />}
+      </Splash>
+      <Sign>
+        <span>TASK BERRY</span>
+        {isSignUp ? <SignUp setIsSignUp={setIsSignUp} /> : <SignIn setIsSignUp={setIsSignUp} />}
+      </Sign>
+    </LandingPageContainer>
   );
 };
 
