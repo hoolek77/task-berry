@@ -28,10 +28,6 @@ const Landing = () => {
     tl.fromTo(taskOne, {}, { duration: 0.4, autoAlpha: 1, delay: 2.2 })
       .fromTo(taskTwo, {}, { duration: 0.4, autoAlpha: 1 })
       .fromTo(taskThree, {}, { duration: 0.4, autoAlpha: 1 });
-
-    return () => {
-      gsap.globalTimeline.pause();
-    };
   }, []);
 
   return (
