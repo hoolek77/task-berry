@@ -2,11 +2,13 @@ import { FC } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { LanguagePicker, MotionAnimation, Notification, ProtectedRoute, UnprotectedRoute } from 'components';
 import { AnimatePresence } from 'framer-motion';
+import { useNotifications } from 'hooks';
 import { FilteredTasks, Home, Landing, UserSettings } from 'views';
 import { NotFound } from 'views/NotFound';
 
 const App: FC = () => {
   const location = useLocation();
+  useNotifications();
 
   return (
     <>

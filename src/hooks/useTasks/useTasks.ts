@@ -1,7 +1,4 @@
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNotifications } from 'hooks/useNotifications';
 import { useUser } from 'hooks/useUser';
 import { CreateTaskType, TasksState, UpdateTaskType } from 'models';
 import { RootState } from 'store';
@@ -16,17 +13,9 @@ import {
 } from 'store/reducers/tasks';
 
 const useTasks = () => {
-  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { openNotification } = useNotifications();
   const { accessToken } = useUser();
   const { tasks, isError, isLoading, isSuccess, labels } = useSelector<RootState, TasksState>((state) => state.tasks);
-
-  useEffect(() => {
-    if (isError) {
-      openNotification({ severity: 'error', message: t('errors.somethingWentWrong') });
-    }
-  }, [isError, isSuccess, openNotification, t]);
 
   const getTasks = async () => {
     await dispatch(getTasksThunk(accessToken));

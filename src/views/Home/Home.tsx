@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 import { ReactComponent as PlusSvg } from 'assets/Plus.svg';
 import { Button, PageWrapper, TaskAdd, TasksContainer, TasksHeader, TasksLoader } from 'components';
-import { useNotifications, useTasks, useUser } from 'hooks';
+import { useTasks } from 'hooks';
 import { ButtonStyle } from 'models';
 
 const Home = () => {
-  const { t } = useTranslation();
   const { tasks, isLoading } = useTasks();
-  const { isSuccess } = useUser();
-  const { openNotification } = useNotifications();
+
   const [isPopup, setIsPopup] = useState(false);
-
-  useEffect(() => {
-    if (isSuccess) {
-      openNotification({ severity: 'success', message: t('successes.login') });
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <PageWrapper>

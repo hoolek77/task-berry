@@ -1,6 +1,5 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { useNotifications, useUser } from 'hooks';
@@ -22,9 +21,8 @@ export interface SignUpData {
 
 const SignUp = ({ setIsSignUp }: SignUpProps) => {
   const { t } = useTranslation();
-  const history = useHistory();
   const { openNotification } = useNotifications();
-  const { signIn, isSuccess, isError } = useUser();
+  const { signIn } = useUser();
   const [{ email, name, password, passwordRepeat }, setSignUpData] = useState<SignUpData>({
     email: '',
     name: '',
@@ -80,17 +78,6 @@ const SignUp = ({ setIsSignUp }: SignUpProps) => {
       setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (isSuccess) {
-      openNotification({ severity: 'success', message: t('successes.signUp') });
-      history.push('/home');
-    }
-
-    if (isError) {
-      openNotification({ severity: 'error', message: t('errors.login') });
-    }
-  }, [isSuccess, isError, openNotification, history, t]);
 
   return (
     <SignUpContainer>

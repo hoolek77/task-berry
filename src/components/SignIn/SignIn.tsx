@@ -1,8 +1,8 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
-import { useNotifications, useUser } from 'hooks';
+import { useUser } from 'hooks';
 import { ButtonStyle, UserSignIn } from 'models';
 
 import { SignInContainer, SignInHeader } from './styles';
@@ -13,8 +13,7 @@ interface SignInProps {
 
 export const SignIn = ({ setIsSignUp }: SignInProps) => {
   const { t } = useTranslation();
-  const { openNotification } = useNotifications();
-  const { isLoading, signIn, isError, isSuccess } = useUser();
+  const { isLoading, signIn } = useUser();
   const [user, setUser] = useState<UserSignIn>({ email: '', password: '' });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -22,12 +21,6 @@ export const SignIn = ({ setIsSignUp }: SignInProps) => {
 
     signIn(user);
   };
-
-  useEffect(() => {
-    if (isError) {
-      openNotification({ severity: 'error', message: t('errors.login') });
-    }
-  }, [isError, isSuccess, openNotification, t]);
 
   return (
     <SignInContainer>
