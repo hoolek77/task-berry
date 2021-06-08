@@ -9,7 +9,7 @@ prepared user:
   - password: Hello321!
 ```
 
-Be aware that first login might take a while, beacuse backend is hosted on free hosting provider.
+The API demo is hosted on a free Heroku dyno (sleepy one), so the first request will take around 30 seconds (it needs to wake up).
 
 ![Landing Page](https://lh3.googleusercontent.com/5hggS8hPzsqkjdNkhlLYSg1TrNWHvVr8MGBzyfSHXrDqxR5YJWo58mt6roEguWFcf15mLoa77OpfRb0jXr0OfdRGtTJGyE9zXZ4KkXgoMHYF4N8N9_LECA33bsq3pdmquVEujTNneqQH1FnDZrvUY8EmxpEuUNcMNydSv-tmAW-WeL-nzEUbQEQDyvK9uNpgO13zMQS9lGZ3DTxIjPTKFj8qZwvsulMpKd5c2YNFEpMR3tbi79ynVovz17JwJakmkoQIH0zKkTgJ59gSNTmlNc0Kl2pW-MRkiIlyo0ltUZ0-q-eKDBfHKGM6aApc125UpWunX4VVYEGWuPHDB9_-Q27zs7_JeneITDgFJ3qNORqVxMLHJWQdqop8M7L6C7i8jJrfEnqAnrfgIR1huf7g5F_EOFfjZU6n-dgPpjaCXZrs9-b6TdguNkyVEOtP0Zb5jehWhukShevT3UD6dE55q0rE0rb_QU46jS3zI1sxdicfGN-j3Z4zWYve7tJnD_7J4RXZvIKbczLAWtgX8lczpSMRaJpglyfIS4EkaXDOOHGeKXRG-hkw-QSj1iFg5hU65tOKbeAFLIf5lmIcP37VKOpZ9zb4AaL8IUiV3da5abbGUzqm_qll5ezpZwb62Nb2SYb_FTHCbP8naf-V8x8HJH3m9B6hPE2tiSV4pBZYM0-2fTxqMJEcQa9BExXxZGLlA7wNuzhbf4hkw3LevVzS2FI=w1767-h981-no?authuser=0)
 
