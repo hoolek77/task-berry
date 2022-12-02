@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://task-berry.herokuapp.com/',
+  baseURL: 'https://web-production-d582.up.railway.app/',
 });
