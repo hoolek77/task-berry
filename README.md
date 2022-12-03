@@ -9,7 +9,7 @@ prepared user:
   - password: Hello321!
 ```
 
-The API demo is hosted on a free Heroku dyno (sleepy one), so the first request will take around 30 seconds (it needs to wake up).
+The API demo is hosted on a free `render` plan (sleepy one), so the first request will take around 30 seconds (it needs to wake up).
 
 ![Landing Page](./docs/images/landing.png)
 
