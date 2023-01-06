@@ -1,5 +1,5 @@
 module.exports = {
-  printWidth: 120,
+  printWidth: 30,
   tabWidth: 2,
   useTabs: false,
   semi: true,
@@ -10,6 +10,6 @@ module.exports = {
   bracketSpacing: true,
   jsxBracketSameLine: false,
   arrowParens: 'always',
-  parser: 'typescript',
+  parser: 'typescriptreact',
   endOfLine: 'lf',
 };
