@@ -1,7 +1,7 @@
 # Task Berry
 
 App is a task managment service.
-Live version is available at **[Task Berry](https://task-berry.netlify.app/)**
+Live version is available at **[Task Berry](https://task-berry.vercel.app/)**
 
 ```
 prepared user:
